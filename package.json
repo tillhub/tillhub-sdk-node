@@ -5,7 +5,9 @@
   "main": "./lib/index.js",
   "scripts": {
     "test": "tape 'test/**/*.spec.js'",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "precommit": "git add",
+    "commit": "git-cz"
   },
   "repository": {
     "type": "git",
@@ -26,7 +28,11 @@
   },
   "homepage": "https://github.com/tillhub/tillhub-sdk-node#readme",
   "devDependencies": {
+    "@types/node": "^10.0.3",
     "codecov": "^3.0.1",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.1.0",
+    "dotenv": "^5.0.1",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.11.0",
@@ -39,10 +45,20 @@
     "proxyquire": "^2.0.1",
     "semantic-release": "^15.2.0",
     "sinon": "^5.0.3",
-    "tape": "^4.9.0"
+    "tape": "^4.9.0",
+    "validate-commit-msg": "^2.14.0"
   },
   "dependencies": {
     "@google-cloud/pubsub": "^0.18.0",
     "request": "^2.85.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "types": "conventional-commit-types",
+      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
+    }
   }
 }
