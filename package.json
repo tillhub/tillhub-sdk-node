@@ -1,0 +1,48 @@
+{
+  "name": "tillhub-sdk-node",
+  "version": "0.0.0-development",
+  "description": "Tillhub SDK for Node.js",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "tape 'test/**/*.spec.js'",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tillhub/tillhub-sdk-node.git"
+  },
+  "keywords": [
+    "tillhub",
+    "sdk",
+    "data"
+  ],
+  "author": "Robert Jefe Lindstaedt <robert.lindstaedt@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tillhub/tillhub-sdk-node/issues"
+  },
+  "engines": {
+    "node": ">=8.6.0"
+  },
+  "homepage": "https://github.com/tillhub/tillhub-sdk-node#readme",
+  "devDependencies": {
+    "codecov": "^3.0.1",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "jsdoc": "^3.5.5",
+    "nodemon": "^1.17.3",
+    "nyc": "^11.7.1",
+    "proxyquire": "^2.0.1",
+    "semantic-release": "^15.2.0",
+    "sinon": "^5.0.3",
+    "tape": "^4.9.0"
+  },
+  "dependencies": {
+    "@google-cloud/pubsub": "^0.18.0",
+    "request": "^2.85.0"
+  }
+}

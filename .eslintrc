@@ -1,0 +1,8 @@
+{
+  "plugins": ["node"],
+  "extends": "standard",
+  "rules": {
+    "node/exports-style": ["error", "module.exports"],
+    "node/no-unsupported-features": ["error"]
+  }
+}
