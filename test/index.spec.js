@@ -6,4 +6,5 @@ test('Can require and instantiate', function (t) {
     const t = new T()
     t.ok(t)
   })
+  t.end()
 })
