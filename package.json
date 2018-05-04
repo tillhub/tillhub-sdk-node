@@ -8,7 +8,7 @@
     "semantic-release": "semantic-release",
     "precommit": "git add -A",
     "commit": "npm run precommit && git-cz",
-    "version": "conventionalChangelog && git add CHANGELOG.md"
+    "version": "git add CHANGELOG.md"
   },
   "repository": {
     "type": "git",
