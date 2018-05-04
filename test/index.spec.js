@@ -1,8 +1,6 @@
 const test = require('tape')
 
-test('timing test', function (t) {
-  t.plan(2)
-
+test('Can require and instantiate', function (t) {
   t.doesNotThrow(() => {
     const T = require('../')
     const t = new T()
