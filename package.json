@@ -4,14 +4,16 @@
   "description": "Tillhub SDK for Node.js",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "tape 'test/**/*.spec.js'",
+    "test": "NODE_ENV=test nyc tape 'test/**/*.spec.js' | tap-spec && nyc report",
+    "coverage": "nyc check-coverage && nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "tdd": "NODE_ENV=test DEBUG=api:* nodemon --exec nodemon test/tdd-runner.js",
     "lint": "eslint .",
     "semantic-release": "semantic-release",
     "precommit": "git add -A",
     "commit": "npm run precommit && git-cz",
     "preversion": "npm run lint && npm test",
-    "postversion": "TAG=$(echo $(git describe --tags $(git rev-list --tags --max-count=1))) && git tag -a $TAG $TAG -f -m \"$(git log `git describe --tags --abbrev=0 HEAD^`..HEAD --oneline)\" && git push && git push --tags"
+    "postversion": "TAG=$(echo $(git describe --tags $(git rev-list --tags --max-count=1))) && git tag -a $TAG $TAG -f -m \"$(git log `git describe --tags --abbrev=0 HEAD^`..HEAD --oneline)\" && git push && git push --tags && npm run clean",
+    "clean": "rm -rf coverage coverage.lcov .nyc_output"
   },
   "repository": {
     "type": "git",
@@ -72,5 +74,29 @@
       "types": "conventional-commit-types",
       "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
     }
+  },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": false,
+    "lines": 10,
+    "statements": 10,
+    "functions": 10,
+    "branches": 10,
+    "include": [
+      "lib/**/*.js"
+    ],
+    "exclude": [
+      "test/**/*.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary",
+      "json"
+    ],
+    "require": [],
+    "extension": [],
+    "cache": true,
+    "all": true,
+    "report-dir": "./coverage"
   }
 }
