@@ -9,7 +9,7 @@
     "tdd": "NODE_ENV=test DEBUG=api:* nodemon --exec nodemon test/tdd-runner.js",
     "lint": "eslint .",
     "docs": "jsdoc -c .jsdoc.js",
-    "deploy-docs": "gh-pages -d \"docs/tillhub-sdk-node/$(echo $npm_package_version)/\"",
+    "deploy-docs": "npm run docs && GH_TOKEN=$GH_TOKEN VERSION=$npm_package_version ./.circleci/pages.js",
     "semantic-release": "semantic-release",
     "precommit": "git add -A",
     "commit": "npm run precommit && git-cz",
