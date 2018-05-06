@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Global - Documentation</title>
+    <title>Auth - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Global</h1>
+    <h1 class="page-title">Auth</h1>
     
 
     
@@ -42,8 +42,10 @@
 <header>
     
         <h2>
-        
+        Auth
         </h2>
+        
+            <div class="class-description"><p>Authenticate an app via different auth strategies</p></div>
         
     
 </header>
@@ -52,8 +54,20 @@
     <div class="container-overview">
     
         
+<div class="section-method">
 
-        
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="Auth"><span class="type-signature"></span>new Auth<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
 
 
 <dl class="details">
@@ -83,6 +97,11 @@
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="v0_auth.js.html">v0/auth.js</a>, <a href="v0_auth.js.html#line18">line 18</a>
+    </li></ul></dd>
+    
 
     
 
@@ -92,7 +111,41 @@
 </dl>
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-examples">
+<h5>Example</h5>
+
+    <pre class="prettyprint"><code>const Auth = require('@tillhub/node-sdk')
+const auth = new Auth ()
+
+pubsub.loginUsername('user@example.com', '123455', (err, body) => {
+  if (err) throw err
+  console.log(body.token)
+})</code></pre>
+
+</div>
+
+</div>
     
     </div>
 
@@ -117,15 +170,11 @@
 
     
 
-    <h4 class="name" id="promisify"><span class="type-signature"></span>promisify<span class="signature">(originalMethod, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function}</span></h4>
+    <h4 class="name" id="loginBasic"><span class="type-signature"></span>loginBasic<span class="signature">(username, password)</span><span class="type-signature"></span></h4>
 
     
 
 
-
-<div class="description">
-    <p>Wraps a callback style function to conditionally return a promise.</p>
-</div>
 
 
 
@@ -160,7 +209,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helpers_promisify.js.html">helpers/promisify.js</a>, <a href="helpers_promisify.js.html#line13">line 13</a>
+        <a href="v0_auth.js.html">v0/auth.js</a>, <a href="v0_auth.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -192,8 +241,6 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -206,32 +253,24 @@
 
         <tr>
             
-                <td class="name"><code>originalMethod</code></td>
+                <td class="name"><code>username</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><code>function</code></span>
+<span class="param-type"><code>String</code></span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
             <td class="description last">
-                <p>The method to promisify.</p>
+                <p>the tillhub client account e-mail address</p>
                 
             </td>
         </tr>
@@ -240,66 +279,13 @@
 
         <tr>
             
-                <td class="name"><code>options</code></td>
+                <td class="name"><code>password</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><code>object</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">
-                <p>Promise options.</p>
-                
-                    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>singular</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>boolean</code></span>
+<span class="param-type"><code>String</code></span>
 
 
             
@@ -310,15 +296,7 @@
             
 
             <td class="description last">
-                <p>Resolve the promise with single arg instead of an array.</p>
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
+                <p>the password corresponding to the tillhub client account</p>
                 
             </td>
         </tr>
@@ -339,31 +317,6 @@
 
 
 
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>function</code></span>
-
-
-    </dd>
-</dl>
-
-
-<div class="param-desc">
-    <p>wrapped</p>
-</div>
-
-    
-</div>
 
 
 
@@ -374,11 +327,15 @@
 
     
 
-    <h4 class="name" id="promisifyAll"><span class="type-signature"></span>promisifyAll<span class="signature">(Class, options)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="loginServiceAccount"><span class="type-signature"></span>loginServiceAccount<span class="signature">(account, serviceAccount, token)</span><span class="type-signature"></span></h4>
 
     
 
 
+
+<div class="description">
+    <p>Authenticate as headless service account.</p>
+</div>
 
 
 
@@ -413,7 +370,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helpers_promisify.js.html">helpers/promisify.js</a>, <a href="helpers_promisify.js.html#line84">line 84</a>
+        <a href="v0_auth.js.html">v0/auth.js</a>, <a href="v0_auth.js.html#line68">line 68</a>
     </li></ul></dd>
     
 
@@ -457,13 +414,13 @@
 
         <tr>
             
-                <td class="name"><code>Class</code></td>
+                <td class="name"><code>account</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><code>function</code></span>
+<span class="param-type"><code>String</code></span>
 
 
             
@@ -474,7 +431,7 @@
             
 
             <td class="description last">
-                <p>the class target whose methods will be promisified</p>
+                <p>tillhub client account uuid</p>
                 
             </td>
         </tr>
@@ -483,13 +440,13 @@
 
         <tr>
             
-                <td class="name"><code>options</code></td>
+                <td class="name"><code>serviceAccount</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><code>*</code></span>
+<span class="param-type"><code>String</code></span>
 
 
             
@@ -500,7 +457,33 @@
             
 
             <td class="description last">
+                <p>name of service account (a type of user in the registered in the client account)</p>
                 
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>token</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>String</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <p>token string</p>
                 
             </td>
         </tr>
