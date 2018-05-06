@@ -2,10 +2,13 @@ module.exports = {
   opts: {
     readme: './README.md',
     package: './package.json',
-    template: './node_modules/minami',
+    template: './node_modules/jsdoc-template',
     recurse: true,
     verbose: true,
-    destination: './docs/'
+    destination: './docs/',
+    allowUnknownTags: true,
+    private: true,
+    "dictionaries": ["jsdoc"]
   },
   plugins: [
     'plugins/markdown'
@@ -15,15 +18,19 @@ module.exports = {
       'lib'
     ],
     includePattern: '\\.js$',
-    exclude: [
-      'lib/helpers'
-    ]
+    excludePattern: '(node_modules/|docs|lib/helpers)'
   },
   templates: {
-    copyright: 'Copyright 2018 Tillhub GmbHs',
+    referenceTitle: 'Tillhub Node.js SDK',
+    copyright: 'Copyright 2018 Tillhub GmbH',
     includeDate: false,
     sourceFiles: false,
     systemName: '@tillhub/node-sdk',
-    theme: 'lumen'
+    disableSort: false,
+    search: {
+      apiKey: 'a5071a2160a259200e45a9dbdb1c624d',
+      indexName: 'node-sdk-index',
+      hitsPerPage: 7,
+    }
   }
 };
