@@ -11,4 +11,8 @@ ghpages.publish(path.resolve(__dirname, `../docs/tillhub-sdk-node/${process.env.
   silent: false
 }, (err) => {
   if (err) throw err
+
+  console.log('====================================')
+  console.log('published docs', process.env.VERSION)
+  console.log('====================================')
 })
