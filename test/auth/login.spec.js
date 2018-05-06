@@ -41,7 +41,7 @@ test('v0.Auth: Can login with username password', function (t) {
     })
   }
 
-  auth.loginBasic(user.username, user.password, (err, body, resp) => {
+  auth.loginUsername(user.username, user.password, (err, body, resp) => {
     t.error(err)
 
     t.ok(body)
