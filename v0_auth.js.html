@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Home - Documentation</title>
+    <title>v0/auth.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,32 +29,80 @@
 
 <div id="main">
     
+    <h1 class="page-title">v0/auth.js</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const EventEmitter = require('events')
+const request = require('retry-request')
 
+class Auth extends EventEmitter {
+  constructor (options = {}) {
+    super()
+    this.options = {
+      base: 'https://staging-api.tillhub.com',
+      ...options
+    }
+  }
 
+  login () {}
 
+  /**
+   *
+   * @param {String} username the tillhub client account e-mail address
+   * @param {String} password the password corresponding to the tillhub client account
+   */
+  loginBasic (username, password, callback) {
+    const opts = {
+      retries: 3
+    }
 
+    const requestOptions = {
+      uri: '/api/v0/users/login',
+      baseUrl: this.options.base,
+      method: 'POST',
+      json: true,
+      body: {
+        email: username,
+        password
+      }
+    }
 
+    request(requestOptions, opts, function (err, resp, body) {
+      if (err) return callback(err)
 
+      if (resp.statusCode === 200) {
+        return callback(null, body, resp)
+      }
 
+      return callback(new Error('tillhub: could not get user login info'), body, resp)
+    })
+  }
 
+  /**
+   * Authenticate as headless service account.
+   *
+   * @param {String} account tillhub client account uuid
+   * @param {String} serviceAccount name of service account (a type of user in the registered in the client account)
+   * @param {String} token token string
+   */
+  loginServiceAccount (account, serviceAccount, token, callback) {
 
-    
+  }
+}
 
-
-    <section class="readme">
-        <article><h1>Tillhub Node.js SDK <a href="http://standardjs.com"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="js-standard-style"></a> <a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release"></a> <a href="https://codecov.io/gh/tillhub/tillhub-sdk-node"><img src="https://codecov.io/gh/tillhub/tillhub-sdk-node/branch/master/graph/badge.svg" alt="codecov"></a></h1><blockquote>
-<p>Abstraction for the Tillhub API</p>
-</blockquote>
-<h2>License</h2><p>MIT</p></article>
+module.exports = {
+  Auth
+}
+</code></pre>
+        </article>
     </section>
-
-
 
 
 
