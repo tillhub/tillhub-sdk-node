@@ -80,3 +80,4 @@ coverage.lcov
 .vscode/last.sql
 *.flamegraph
 traces/
+docs
