@@ -1,6 +1,10 @@
 version: 2
 jobs:
   build:
+    branches:
+      ignore:
+        - gh-pages
+        - /feature-.*/
     docker:
       - image: 'circleci/node:latest'
     steps:
