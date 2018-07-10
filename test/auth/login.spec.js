@@ -22,11 +22,11 @@ test('v0.Auth: Can login with username password', function (t) {
   t.ok(auth)
 
   if (!process.env.SYSTEM_TEST) {
-    test.nock('https://staging-api.tillhub.com').post('/api/v0/users/login').reply(200, {
+    test.nock('https://api.tillhub.com').post('/api/v0/users/login').reply(200, {
       'status': 200,
       'msg': 'Authentication was good.',
       'request': {
-        'host': 'staging-api.tillhub.com',
+        'host': 'api.tillhub.com',
         'id': '11a12a8f-96bf-4380-aa55-301b7806f66f'
       },
       'user': {
@@ -41,15 +41,11 @@ test('v0.Auth: Can login with username password', function (t) {
     })
   }
 
-  auth.loginUsername(user.username, user.password, (err, body, resp) => {
+  auth.loginUsername(user.username, user.password, (err, { token, user }, resp) => {
     t.error(err)
 
-    t.ok(body)
-
-    t.ok(body.token)
-    t.ok(body.user)
-    t.ok(body.user.id)
-    t.equals(body.token_type, 'Bearer')
+    t.ok(token)
+    t.ok(user)
     t.end()
   })
 })
