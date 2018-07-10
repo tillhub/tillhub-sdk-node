@@ -44,6 +44,7 @@ test('root: Can init with auth credentials', function (t) {
     t.ok(th.auth.token)
     t.ok(th.auth.user)
     t.ok(th.user)
+    t.ok(th.http)
     t.ok(authInstance === th.auth)
     t.end()
   })
