@@ -7,3 +7,4 @@ node-sdk.code-workspace
 .editorconfig
 .gitignore
 api-docs.js
+docs
