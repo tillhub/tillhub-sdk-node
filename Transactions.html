@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      Auth - Documentation
+      Transactions - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -90,7 +90,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        Auth
+        Transactions
       </h1>
     
 
@@ -101,13 +101,13 @@
     
       <h2>
         
-        Auth
+        Transactions
         
       </h2>
 
       
         <div class="class-description">
-          <p>Authenticate an app via different auth strategies</p>
+          <p>Handle Tillhub Transactions from the v0 Model</p>
         </div>
       
     
@@ -124,13 +124,13 @@
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#Auth">
+    <a class="link-icon" href="#Transactions">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id="Auth">
-      <span class="type-signature"></span>new Auth<span class="signature">()</span><span class="type-signature"></span>
+    <h4 class="name" id="Transactions">
+      <span class="type-signature"></span>new Transactions<span class="signature">()</span><span class="type-signature"></span>
     </h4>
   </span>
 
@@ -178,7 +178,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="v0_auth.js.html">v0/auth.js</a>, <a href="v0_auth.js.html#line22">line 22</a>
+          <a href="v0_transactions.js.html">v0/transactions.js</a>, <a href="v0_transactions.js.html#line24">line 24</a>
         </li>
       </ul>
     </dd>
@@ -204,23 +204,27 @@
 
 
   <div class="example-container">
-    <a class="link-icon" href="#Auth-examples">
+    <a class="link-icon" href="#Transactions-examples">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h5 id="Auth-examples">Example</h5>
+    <h5 id="Transactions-examples">Example</h5>
     
 
-  <pre class="prettyprint"><code>const Auth = require('@tillhub/node-sdk')
-const auth = new Auth ()
+  <pre class="prettyprint"><code>const Tillhub = require('@tillhub/node-sdk')
+const th = new Tillhub({
+  credentials: {
+    username: 'user@example.com',
+    password: '123455'
+  }
+})
 
-pubsub.loginUsername('user@example.com', '123455', (err, body) => {
-  if (err) throw err
-  console.log(body.token)
-  console.log(body.user.id)
-  console.log(body.user.legacy_id)
-})</code></pre>
+await th.init()
+const transactions = th.transactions()
+
+const { data, metadata } = await transactions.getAll()
+console.log(data) // [...]</code></pre>
 
 
   </div>
@@ -251,13 +255,13 @@ pubsub.loginUsername('user@example.com', '123455', (err, body) => {
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#loginServiceAccount">
+    <a class="link-icon" href="#getAll">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id="loginServiceAccount">
-      <span class="type-signature"></span>loginServiceAccount<span class="signature">(account, serviceAccount, token)</span><span class="type-signature"></span>
+    <h4 class="name" id="getAll">
+      <span class="type-signature"></span>getAll<span class="signature">(queryOrCallback<span class="signature-attributes">opt</span>, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
     </h4>
   </span>
 
@@ -266,7 +270,7 @@ pubsub.loginUsername('user@example.com', '123455', (err, body) => {
 
 
   <div class="description">
-    <p>Authenticate as headless service account.</p>
+    <p>Get all transactions from client account.</p>
   </div>
 
 
@@ -288,6 +292,8 @@ pubsub.loginUsername('user@example.com', '123455', (err, body) => {
       <th>Type</th>
 
       
+        <th>Attributes</th>
+      
 
       
 
@@ -299,14 +305,20 @@ pubsub.loginUsername('user@example.com', '123455', (err, body) => {
     
       <tr>
         
-          <td class="name"><code>account</code></td>
+          <td class="name"><code>queryOrCallback</code></td>
         
 
         <td class="type">
           
             
     <span class="param-type">
-      String
+      Object
+    </span>
+
+    |
+
+    <span class="param-type">
+      function
     </span>
 
     
@@ -316,11 +328,21 @@ pubsub.loginUsername('user@example.com', '123455', (err, body) => {
         </td>
 
         
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
 
         
 
         <td class="description last">
-          <p>tillhub client account uuid</p>
+          <p>query for transactions with allowed paramaters, or specify an optional callback</p>
           
         </td>
       </tr>
@@ -328,14 +350,14 @@ pubsub.loginUsername('user@example.com', '123455', (err, body) => {
     
       <tr>
         
-          <td class="name"><code>serviceAccount</code></td>
+          <td class="name"><code>callback</code></td>
         
 
         <td class="type">
           
             
     <span class="param-type">
-      String
+      function
     </span>
 
     
@@ -345,40 +367,21 @@ pubsub.loginUsername('user@example.com', '123455', (err, body) => {
         </td>
 
         
-
-        
-
-        <td class="description last">
-          <p>name of service account (a type of user in the registered in the client account)</p>
-          
-        </td>
-      </tr>
-
-    
-      <tr>
-        
-          <td class="name"><code>token</code></td>
-        
-
-        <td class="type">
-          
+          <td class="attributes">
             
-    <span class="param-type">
-      String
-    </span>
+              &lt;optional><br>
+            
 
-    
+            
 
-
-          
-        </td>
-
+            
+          </td>
         
 
         
 
         <td class="description last">
-          <p>token string</p>
+          <p>optional callback. If not specified, this function returns a promise</p>
           
         </td>
       </tr>
@@ -422,178 +425,7 @@ pubsub.loginUsername('user@example.com', '123455', (err, body) => {
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="v0_auth.js.html">v0/auth.js</a>, <a href="v0_auth.js.html#line82">line 82</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#loginUsername">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id="loginUsername">
-      <span class="type-signature"></span>loginUsername<span class="signature">(username, password)</span><span class="type-signature"></span>
-    </h4>
-  </span>
-
-  
-
-
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>username</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      String
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>the tillhub client account e-mail address</p>
-          
-        </td>
-      </tr>
-
-    
-      <tr>
-        
-          <td class="name"><code>password</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      String
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>the password corresponding to the tillhub client account</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="v0_auth.js.html">v0/auth.js</a>, <a href="v0_auth.js.html#line45">line 45</a>
+          <a href="v0_transactions.js.html">v0/transactions.js</a>, <a href="v0_transactions.js.html#line42">line 42</a>
         </li>
       </ul>
     </dd>

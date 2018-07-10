@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      auth.js - Documentation
+      v0/transactions.js - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -86,13 +86,13 @@
       Tillhub Node.js SDK
     </h3>
 
-    <h3>Classes</h3><ul><li id="Auth-nav"><a href="Auth.html">Auth</a><ul class='methods'><li data-type="method" id="Auth-loginServiceAccount-nav"><a href="Auth.html#loginServiceAccount">loginServiceAccount</a></li><li data-type="method" id="Auth-loginUsername-nav"><a href="Auth.html#loginUsername">loginUsername</a></li></ul></li></ul>
+    <h3>Classes</h3><ul><li id="Auth-nav"><a href="Auth.html">Auth</a><ul class='methods'><li data-type="method" id="Auth-loginServiceAccount-nav"><a href="Auth.html#loginServiceAccount">loginServiceAccount</a></li><li data-type="method" id="Auth-loginUsername-nav"><a href="Auth.html#loginUsername">loginUsername</a></li></ul></li><li id="Tillhub-nav"><a href="Tillhub.html">Tillhub</a><ul class='methods'><li data-type="method" id="Tillhub-init-nav"><a href="Tillhub.html#init">init</a></li><li data-type="method" id="Tillhub-transactions-nav"><a href="Tillhub.html#transactions">transactions</a></li></ul></li><li id="Transactions-nav"><a href="Transactions.html">Transactions</a><ul class='methods'><li data-type="method" id="Transactions-getAll-nav"><a href="Transactions.html#getAll">getAll</a></li></ul></li></ul>
   </nav>
 
   <div id="main">
     
       <h1 class="page-title">
-        auth.js
+        v0/transactions.js
       </h1>
     
 
@@ -102,79 +102,70 @@
 <section>
   <article>
     <pre class="prettyprint source linenums"><code>const EventEmitter = require('events')
-const request = require('retry-request')
 
 /**
- * Authenticate an app via different auth strategies
+ * Handle Tillhub Transactions from the v0 Model
  *
  * @class
  *
  * @example
- * const Auth = require('@tillhub/node-sdk')
- * const auth = new Auth ()
- *
- * pubsub.loginUsername('user@example.com', '123455', (err, body) => {
- *   if (err) throw err
- *   console.log(body.token)
+ * const Tillhub = require('@tillhub/node-sdk')
+ * const th = new Tillhub({
+ *   credentials: {
+ *     username: 'user@example.com',
+ *     password: '123455'
+ *   }
  * })
+ *
+ * await th.init()
+ * const transactions = th.transactions()
+ *
+ * const { data, metadata } = await transactions.getAll()
+ * console.log(data) // [...]
+ *
  */
-class Auth extends EventEmitter {
-  constructor (options = {}) {
+class Transactions extends EventEmitter {
+  constructor (options = {}, http) {
     super()
     this.options = {
-      base: 'https://staging-api.tillhub.com',
       ...options
     }
+
+    this.endpoint = '/api/v0/transactions'
+
+    this.http = http
   }
 
-  login () {}
-
   /**
+   * Get all transactions from client account.
    *
-   * @param {String} username the tillhub client account e-mail address
-   * @param {String} password the password corresponding to the tillhub client account
+   * @param {Object|Function} [queryOrCallback] query for transactions with allowed paramaters, or specify an optional callback
+   * @param {Function} [callback] optional callback. If not specified, this function returns a promise
    */
-  loginUsername (username, password, callback) {
-    const opts = {
-      retries: 3
-    }
+  getAll (queryOrCallback, callback) {
+    if (!callback &amp;&amp; typeof queryOrCallback === 'function') callback = queryOrCallback
 
     const requestOptions = {
-      uri: '/api/v0/users/login',
+      uri: `${this.endpoint}/${this.options.user}/legacy`,
       baseUrl: this.options.base,
-      method: 'POST',
-      json: true,
-      body: {
-        email: username,
-        password
-      }
+      method: 'GET',
+      json: true
     }
 
-    request(requestOptions, opts, function (err, resp, body) {
+    this.http(requestOptions, (err, resp, body) => {
       if (err) return callback(err)
 
       if (resp.statusCode === 200) {
-        return callback(null, body, resp)
+        return callback(null, body.results, { count: body.count })
       }
 
-      return callback(new Error('tillhub: could not get user login info'), body, resp)
+      return callback(new Error('tillhub: could not get transactions'), body, resp)
     })
-  }
-
-  /**
-   * Authenticate as headless service account.
-   *
-   * @param {String} account tillhub client account uuid
-   * @param {String} serviceAccount name of service account (a type of user in the registered in the client account)
-   * @param {String} token token string
-   */
-  loginServiceAccount (account, serviceAccount, token, callback) {
-
   }
 }
 
 module.exports = {
-  Auth
+  Transactions
 }
 </code></pre>
   </article>
