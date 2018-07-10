@@ -1,7 +1,7 @@
 {
   "name": "tillhub-sdk-node",
   "version": "0.1.0",
-  "description": "Tillhub SDK for Node.js",
+  "description": "Tillhub SDK for Node.js.",
   "main": "./lib/index.js",
   "scripts": {
     "test": "NODE_ENV=test nyc tape 'test/**/*.spec.js' | tap-spec && nyc report",
