@@ -5,6 +5,8 @@ const glob = require('glob')
 const chalk = require('chalk')
 const tapSpec = require('tap-spec')
 
+require('dotenv').config()
+
 process.env.NODE_ENV = 'test'
 
 pump(test.createStream(), tapSpec(), process.stdout, (err) => {

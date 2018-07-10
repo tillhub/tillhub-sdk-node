@@ -7,6 +7,7 @@
     "test": "NODE_ENV=test nyc tape 'test/**/*.spec.js' | tap-spec && nyc report",
     "coverage": "nyc check-coverage && nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "tdd": "NODE_ENV=test DEBUG=api:* nodemon --exec nodemon test/tdd-runner.js",
+    "tdd:all": "NODE_ENV=test DEBUG=api:* nodemon --exec nodemon test/tdd-runner.js test/**/*.spec.js",
     "lint": "eslint .",
     "docs": "jsdoc -c .jsdoc.js",
     "docs:md": "jsdoc2md lib/**/*.js > API.md",
@@ -67,6 +68,7 @@
   },
   "dependencies": {
     "@google-cloud/pubsub": "^0.18.0",
+    "http-errors": "^1.6.3",
     "is": "^3.2.1",
     "pump": "^3.0.0",
     "request": "^2.85.0",
