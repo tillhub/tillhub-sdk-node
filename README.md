@@ -2,6 +2,10 @@
 
 > Abstraction for the Tillhub API
 
+## Docs
+
+Visit the API documention [here](https://tillhub.github.io/tillhub-sdk-node/) or from the [tree](https://github.com/tillhub/tillhub-sdk-node/blob/master/API.md).
+
 ## License
 
 MIT
