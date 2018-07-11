@@ -122,6 +122,11 @@
     "report-dir": "./coverage"
   },
   "release": {
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
     "prepare": [
       "@semantic-release/npm",
       {
@@ -134,12 +139,6 @@
         "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       },
       "@semantic-release/changelog",
-      "@semantic-release/npm"
-    ],
-    "publish": [
-      "@semantic-release/changelog",
-      "@semantic-release/npm",
-      "@semantic-release/git",
       "@semantic-release/github"
     ]
   }
