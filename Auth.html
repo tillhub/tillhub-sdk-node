@@ -84,7 +84,7 @@
       Tillhub Node.js SDK
     </h3>
 
-    <h3>Classes</h3><ul><li id="Auth-nav"><a href="Auth.html">Auth</a><ul class='methods'><li data-type="method" id="Auth-loginServiceAccount-nav"><a href="Auth.html#loginServiceAccount">loginServiceAccount</a></li></ul></li><li id="AuthV0-nav"><a href="AuthV0.html">AuthV0</a><ul class='methods'><li data-type="method" id="AuthV0-loginUsername-nav"><a href="AuthV0.html#loginUsername">loginUsername</a></li></ul></li><li id="Products-nav"><a href="Products.html">Products</a><ul class='methods'><li data-type="method" id="Products-getAll-nav"><a href="Products.html#getAll">getAll</a></li></ul></li><li id="Tillhub-nav"><a href="Tillhub.html">Tillhub</a><ul class='methods'><li data-type="method" id="Tillhub-init-nav"><a href="Tillhub.html#init">init</a></li><li data-type="method" id="Tillhub-products-nav"><a href="Tillhub.html#products">products</a></li><li data-type="method" id="Tillhub-transactions-nav"><a href="Tillhub.html#transactions">transactions</a></li></ul></li><li id="Transactions-nav"><a href="Transactions.html">Transactions</a><ul class='methods'><li data-type="method" id="Transactions-getAll-nav"><a href="Transactions.html#getAll">getAll</a></li></ul></li></ul>
+    <h3>Classes</h3><ul><li id=""v0.Auth"-nav"><a href="-_v0.Auth_.html">"v0.Auth"</a></li><li id="Auth-nav"><a href="Auth.html">Auth</a><ul class='methods'><li data-type="method" id="Auth-loginServiceAccount-nav"><a href="Auth.html#loginServiceAccount">loginServiceAccount</a></li><li data-type="method" id="Auth-loginUsername-nav"><a href="Auth.html#loginUsername">loginUsername</a></li></ul></li><li id="Products-nav"><a href="Products.html">Products</a><ul class='methods'><li data-type="method" id="Products-getAll-nav"><a href="Products.html#getAll">getAll</a></li></ul></li><li id="Tillhub-nav"><a href="Tillhub.html">Tillhub</a><ul class='methods'><li data-type="method" id="Tillhub-init-nav"><a href="Tillhub.html#init">init</a></li><li data-type="method" id="Tillhub-products-nav"><a href="Tillhub.html#products">products</a></li><li data-type="method" id="Tillhub-transactions-nav"><a href="Tillhub.html#transactions">transactions</a></li></ul></li><li id="Transactions-nav"><a href="Transactions.html">Transactions</a><ul class='methods'><li data-type="method" id="Transactions-getAll-nav"><a href="Transactions.html#getAll">getAll</a></li></ul></li></ul>
   </nav>
 
   <div id="main">
@@ -178,7 +178,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="v1_auth.js.html">v1/auth.js</a>, <a href="v1_auth.js.html#line23">line 23</a>
+          <a href="v1_auth.js.html">v1/auth.js</a>, <a href="v1_auth.js.html#line24">line 24</a>
         </li>
       </ul>
     </dd>
@@ -212,7 +212,7 @@
     <h5 id="Auth-examples">Example</h5>
     
 
-  <pre class="prettyprint"><code>const Auth = require('@tillhub/node-sdk')
+  <pre class="prettyprint"><code>const Auth = require('@tillhub/node-sdk').v1.Auth
 const auth = new Auth ()
 
 pubsub.loginServiceAccount('user@example.com', '123455', (err, body) => {
@@ -228,6 +228,17 @@ pubsub.loginServiceAccount('user@example.com', '123455', (err, body) => {
 
       
     </div>
+
+    
+      <h3 class="subsection-title">Extends</h3>
+
+      
+
+
+  <ul>
+    <li><a href="-_v0.Auth_.html">"v0.Auth"</a></li>
+  </ul>
+
 
     
 
@@ -393,7 +404,178 @@ pubsub.loginServiceAccount('user@example.com', '123455', (err, body) => {
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="v1_auth.js.html">v1/auth.js</a>, <a href="v1_auth.js.html#line51">line 51</a>
+          <a href="v1_auth.js.html">v1/auth.js</a>, <a href="v1_auth.js.html#line52">line 52</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#loginUsername">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="loginUsername">
+      <span class="type-signature"></span>loginUsername<span class="signature">(username, password)</span><span class="type-signature"></span>
+    </h4>
+  </span>
+
+  
+
+
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>username</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      String
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>the tillhub client account e-mail address</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>password</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      String
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>the password corresponding to the tillhub client account</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="v0_auth.js.html">v0/auth.js</a>, <a href="v0_auth.js.html#line45">line 45</a>
         </li>
       </ul>
     </dd>
