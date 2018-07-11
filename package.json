@@ -38,6 +38,14 @@
   "engines": {
     "node": ">=8.6.0"
   },
+  "files": [
+    "protos",
+    "src",
+    "test",
+    "AUTHORS",
+    "CONTRIBUTORS",
+    "LICENSE"
+  ],
   "homepage": "https://github.com/tillhub/tillhub-sdk-node#readme",
   "devDependencies": {
     "@types/node": "^10.0.3",
@@ -72,6 +80,8 @@
     "@google-cloud/pubsub": "^0.18.0",
     "http-errors": "^1.6.3",
     "is": "^3.2.1",
+    "just-safe-set": "^2.0.1",
+    "just-typeof": "^1.0.5",
     "pump": "^3.0.0",
     "request": "^2.87.0",
     "retry-request": "^3.3.1"
