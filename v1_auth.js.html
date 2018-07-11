@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      Auth - Documentation
+      v1/auth.js - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -90,345 +92,100 @@
   <div id="main">
     
       <h1 class="page-title">
-        Auth
+        v1/auth.js
       </h1>
     
 
     
+      
 
 <section>
-  <header>
-    
-      <h2>
-        
-        Auth
-        
-      </h2>
-
-      
-        <div class="class-description">
-          <p>Authenticate an app via different auth strategies</p>
-        </div>
-      
-    
-  </header>
-
   <article>
-    <div class="container-overview">
-      
-        
-
-
-  
-    <h2>Constructor</h2>
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#Auth">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id="Auth">
-      <span class="type-signature"></span>new Auth<span class="signature">()</span><span class="type-signature"></span>
-    </h4>
-  </span>
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="v1_auth.js.html">v1/auth.js</a>, <a href="v1_auth.js.html#line23">line 23</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="example-container">
-    <a class="link-icon" href="#Auth-examples">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h5 id="Auth-examples">Example</h5>
-    
-
-  <pre class="prettyprint"><code>const Auth = require('@tillhub/node-sdk')
-const auth = new Auth ()
-
-pubsub.loginServiceAccount('user@example.com', '123455', (err, body) => {
-  if (err) throw err
-  console.log(body.token)
-  console.log(body.user.id)
-  console.log(body.user.legacy_id)
-})</code></pre>
-
-
-  </div>
-
-
-      
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-      <h3 class="subsection-title">Methods</h3>
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#loginServiceAccount">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id="loginServiceAccount">
-      <span class="type-signature"></span>loginServiceAccount<span class="signature">(clientAccount, apiKey)</span><span class="type-signature"></span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Authenticate as headless service account.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>clientAccount</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      String
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>tillhub client account uuid</p>
-          
-        </td>
-      </tr>
-
-    
-      <tr>
-        
-          <td class="name"><code>apiKey</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      String
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>name of service account (a type of user in the registered in the client account)</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="v1_auth.js.html">v1/auth.js</a>, <a href="v1_auth.js.html#line51">line 51</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-    
-
-    
-
-    
+    <pre class="prettyprint source linenums"><code>const request = require('retry-request')
+
+const { Auth: AuthV0 } = require('../v0/auth')
+
+const errors = require('../errors')
+
+/**
+ * Authenticate an app via different auth strategies
+ *
+ * @class
+ *
+ * @example
+ * const Auth = require('@tillhub/node-sdk')
+ * const auth = new Auth ()
+ *
+ * pubsub.loginServiceAccount('user@example.com', '123455', (err, body) => {
+ *   if (err) throw err
+ *   console.log(body.token)
+ *   console.log(body.user.id)
+ *   console.log(body.user.legacy_id)
+ * })
+ */
+class Auth extends AuthV0 {
+  constructor (options = {}) {
+    super()
+    this.options = {
+      credentials: {},
+      base: process.env.TILLHUB_BASE || 'https://api.tillhub.com',
+      ...options
+    }
+  }
+
+  authenticate (callback) {
+    if (this.options.credentials.username &amp;&amp; this.options.credentials.password) {
+      return this.loginUsername(this.options.credentials.username, this.options.credentials.password, callback)
+    }
+
+    if (this.options.credentials.id &amp;&amp; this.options.credentials.apiKey) {
+      return this.loginServiceAccount(this.options.credentials.id, this.options.credentials.apiKey, callback)
+    }
+
+    return callback(errors.generate(errors.constants.INSUFFICIENT_CREDENTIALS))
+  }
+
+  /**
+   * Authenticate as headless service account.
+   *
+   * @param {String} clientAccount tillhub client account uuid
+   * @param {String} apiKey name of service account (a type of user in the registered in the client account)
+   */
+  loginServiceAccount (clientAccount, apiKey, callback) {
+    const requestOptions = {
+      uri: '/api/v1/users/auth/key',
+      baseUrl: this.options.base,
+      method: 'POST',
+      json: true,
+      body: {
+        id: clientAccount,
+        api_key: apiKey
+      }
+    }
+
+    request(requestOptions, (err, resp, body) => {
+      if (err) return callback(err)
+
+      if (resp.statusCode === 200) {
+        this.token = body.token
+        this.user = body.user.legacy_id || body.user.id
+
+        return callback(null, { token: this.token, user: this.user })
+      }
+
+      return callback(new Error('tillhub: could not get serviceaccount login info'), body, resp)
+    })
+  }
+}
+
+module.exports = {
+  Auth
+}
+</code></pre>
   </article>
 </section>
 
-
+    
 
 
   </div>
