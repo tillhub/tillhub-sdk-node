@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      v0/transactions.js - Documentation
+      Products - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -92,122 +90,377 @@
   <div id="main">
     
       <h1 class="page-title">
-        v0/transactions.js
+        Products
       </h1>
     
 
     
-      
 
 <section>
+  <header>
+    
+      <h2>
+        
+        Products
+        
+      </h2>
+
+      
+        <div class="class-description">
+          <p>Handle Tillhub Transactions from the v0 Model</p>
+        </div>
+      
+    
+  </header>
+
   <article>
-    <pre class="prettyprint source linenums"><code>const EventEmitter = require('events')
-const typeOf = require('just-typeof')
-const safeSet = require('just-safe-set')
+    <div class="container-overview">
+      
+        
 
-/**
- * Handle Tillhub Transactions from the v0 Model
- *
- * @class
- *
- * @example
- * const Tillhub = require('@tillhub/node-sdk')
- * const th = new Tillhub({
- *   credentials: {
- *     username: 'user@example.com',
- *     password: '123455'
- *   }
- * })
- *
- * await th.init()
- * const transactions = th.transactions()
- *
- * const { data, metadata } = await transactions.getAll()
- * console.log(data) // [...]
- *
- */
-class Transactions extends EventEmitter {
-  constructor (options = {}, http) {
-    super()
-    this.options = {
-      ...options
-    }
 
-    this.endpoint = '/api/v0/transactions'
+  
+    <h2>Constructor</h2>
+  
 
-    this.http = http
+  <span class='name-container'>
+    <a class="link-icon" href="#Products">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="Products">
+      <span class="type-signature"></span>new Products<span class="signature">()</span><span class="type-signature"></span>
+    </h4>
+  </span>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="v1_products.js.html">v1/products.js</a>, <a href="v1_products.js.html#line26">line 26</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#Products-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="Products-examples">Example</h5>
+    
+
+  <pre class="prettyprint"><code>const Tillhub = require('@tillhub/node-sdk')
+const th = new Tillhub({
+  credentials: {
+    username: 'user@example.com',
+    password: '123455'
   }
+})
 
-  /**
-   * Get all transactions from client account.
-   *
-   * @param {Object|Function} [queryOrCallback] query for transactions with allowed paramaters, or specify an optional callback
-   * @param {Function} [callback] optional callback. If not specified, this function returns a promise
-   */
-  getAll (queryOrCallback, callback) {
-    if (!callback &amp;&amp; typeof queryOrCallback === 'function') {
-      callback = queryOrCallback
-      queryOrCallback = {}
-    }
+await th.init()
+const products = th.Products()
 
-    if (typeOf(queryOrCallback) !== 'object') {
-      return callback(new TypeError('query parameter must be object'))
-    }
+const { data, metadata } = await products.getAll()
+console.log(data) // [...]</code></pre>
 
-    if (queryOrCallback.limit) safeSet(queryOrCallback, 'qs.limit', queryOrCallback.limit)
 
-    let requestOptions = {
-      json: true
-    }
+  </div>
 
-    // user, but more often this function itself can override the URI
-    // property. This will be used for paging out and providing a callable function,
-    // later on
-    if (!queryOrCallback.uri) {
-      requestOptions = {
-        ...requestOptions,
-        uri: `${this.endpoint}/${this.options.user}/legacy`,
-        baseUrl: this.options.base,
-        qs: queryOrCallback.qs,
-        method: 'GET'
-      }
-    } else {
-      requestOptions = {
-        ...requestOptions,
-        uri: queryOrCallback.uri,
-        method: 'GET'
-      }
-    }
 
-    this.http(requestOptions, (err, resp, body) => {
-      if (err) return callback(err)
+      
+    </div>
 
-      if (resp.statusCode === 200) {
-        let next = null
+    
 
-        // handling paging by providing a callable function to caller
-        if (body.cursor &amp;&amp; body.cursor.next) {
-          next = (cb) => {
-            this.getAll({ uri: body.cursor.next }, cb)
-          }
-        }
+    
 
-        return callback(null, body.results, { count: body.count, cursor: body.cursor }, next)
-      }
+    
 
-      return callback(new Error('tillhub: could not get transactions'), body, resp)
-    })
-  }
-}
+     
 
-module.exports = {
-  Transactions
-}
-</code></pre>
+    
+
+    
+
+    
+      <h3 class="subsection-title">Methods</h3>
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#getAll">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id="getAll">
+      <span class="type-signature"></span>getAll<span class="signature">(queryOrCallback<span class="signature-attributes">opt</span>, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Get all products from client account.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+        <th>Attributes</th>
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>queryOrCallback</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Object
+    </span>
+
+    |
+
+    <span class="param-type">
+      function
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>query for products with allowed paramaters, or specify an optional callback</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>callback</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      function
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>optional callback. If not specified, this function returns a promise</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="v1_products.js.html">v1/products.js</a>, <a href="v1_products.js.html#line44">line 44</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+
+    
+
+    
   </article>
 </section>
 
-    
+
 
 
   </div>

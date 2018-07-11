@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      v0/transactions.js - Documentation
+      v1/products.js - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -92,7 +92,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        v0/transactions.js
+        v1/products.js
       </h1>
     
 
@@ -120,28 +120,28 @@ const safeSet = require('just-safe-set')
  * })
  *
  * await th.init()
- * const transactions = th.transactions()
+ * const products = th.Products()
  *
- * const { data, metadata } = await transactions.getAll()
+ * const { data, metadata } = await products.getAll()
  * console.log(data) // [...]
  *
  */
-class Transactions extends EventEmitter {
+class Products extends EventEmitter {
   constructor (options = {}, http) {
     super()
     this.options = {
       ...options
     }
 
-    this.endpoint = '/api/v0/transactions'
+    this.endpoint = '/api/v1/products'
 
     this.http = http
   }
 
   /**
-   * Get all transactions from client account.
+   * Get all products from client account.
    *
-   * @param {Object|Function} [queryOrCallback] query for transactions with allowed paramaters, or specify an optional callback
+   * @param {Object|Function} [queryOrCallback] query for products with allowed paramaters, or specify an optional callback
    * @param {Function} [callback] optional callback. If not specified, this function returns a promise
    */
   getAll (queryOrCallback, callback) {
@@ -166,7 +166,7 @@ class Transactions extends EventEmitter {
     if (!queryOrCallback.uri) {
       requestOptions = {
         ...requestOptions,
-        uri: `${this.endpoint}/${this.options.user}/legacy`,
+        uri: `${this.endpoint}/${this.options.user}`,
         baseUrl: this.options.base,
         qs: queryOrCallback.qs,
         method: 'GET'
@@ -201,7 +201,7 @@ class Transactions extends EventEmitter {
 }
 
 module.exports = {
-  Transactions
+  Products
 }
 </code></pre>
   </article>
