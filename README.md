@@ -8,4 +8,4 @@ Visit the API documention [here](https://tillhub.github.io/tillhub-sdk-node/) or
 
 ## License
 
-MIT
+Apache-2.0
