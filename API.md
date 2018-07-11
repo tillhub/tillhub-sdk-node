@@ -7,6 +7,9 @@
 <dt><a href="#Transactions">Transactions</a></dt>
 <dd><p>Handle Tillhub Transactions from the v0 Model</p>
 </dd>
+<dt><a href="#Products">Products</a></dt>
+<dd><p>Handle Tillhub Transactions from the v0 Model</p>
+</dd>
 </dl>
 
 <a name="Auth"></a>
@@ -59,5 +62,23 @@ Get all transactions from client account.
 | Param | Type | Description |
 | --- | --- | --- |
 | [queryOrCallback] | <code>Object</code> \| <code>function</code> | query for transactions with allowed paramaters, or specify an optional callback |
+| [callback] | <code>function</code> | optional callback. If not specified, this function returns a promise |
+
+<a name="Products"></a>
+
+## Products
+Handle Tillhub Transactions from the v0 Model
+
+**Kind**: global class  
+<a name="Products+getAll"></a>
+
+### products.getAll([queryOrCallback], [callback])
+Get all products from client account.
+
+**Kind**: instance method of [<code>Products</code>](#Products)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [queryOrCallback] | <code>Object</code> \| <code>function</code> | query for products with allowed paramaters, or specify an optional callback |
 | [callback] | <code>function</code> | optional callback. If not specified, this function returns a promise |
 
