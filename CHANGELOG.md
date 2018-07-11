@@ -1,3 +1,10 @@
+## [0.4.4](https://github.com/tillhub/tillhub-sdk-node/compare/v0.4.3...v0.4.4) (2018-07-11)
+
+
+### Bug Fixes
+
+* **release:** fixes order of prepares, which excludeded changelog ([6d0a167](https://github.com/tillhub/tillhub-sdk-node/commit/6d0a167))
+
 ## [0.4.2](https://github.com/tillhub/tillhub-sdk-node/compare/v0.4.1...v0.4.2) (2018-07-11)
 
 
