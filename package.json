@@ -31,7 +31,7 @@
     "data"
   ],
   "author": "Robert Jefe Lindstaedt <robert.lindstaedt@gmail.com>",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/tillhub/tillhub-sdk-node/issues"
   },
@@ -39,11 +39,9 @@
     "node": ">=8.6.0"
   },
   "files": [
-    "protos",
-    "src",
+    "lib",
     "test",
     "AUTHORS",
-    "CONTRIBUTORS",
     "LICENSE"
   ],
   "homepage": "https://github.com/tillhub/tillhub-sdk-node#readme",
