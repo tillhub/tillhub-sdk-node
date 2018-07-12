@@ -1,3 +1,10 @@
+## [0.4.5](https://github.com/tillhub/tillhub-sdk-node/compare/v0.4.4...v0.4.5) (2018-07-12)
+
+
+### Bug Fixes
+
+* fixes ref to Auth classes ([3c01c74](https://github.com/tillhub/tillhub-sdk-node/commit/3c01c74))
+
 ## [0.4.4](https://github.com/tillhub/tillhub-sdk-node/compare/v0.4.3...v0.4.4) (2018-07-11)
 
 
