@@ -12,7 +12,7 @@
     "lint": "eslint .",
     "docs": "jsdoc -c .jsdoc.js",
     "docs:md": "jsdoc2md lib/**/*.js > API.md",
-    "deploy-docs": "gh-pages -d \"docs/@tillhub/node-sdk/$(echo $npm_package_version)/\"",
+    "docs:deploy": "gh-pages -d \"docs/@tillhub/node-sdk/$(echo $npm_package_version)/\"",
     "semantic-release": "semantic-release",
     "precommit": "git add -A",
     "commit": "npm run precommit && git-cz",

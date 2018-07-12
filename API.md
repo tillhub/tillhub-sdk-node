@@ -28,11 +28,10 @@ Authenticate an app via different auth strategies
 const Auth = require('@tillhub/node-sdk').v0.Auth
 const auth = new Auth ()
 
-pubsub.loginUsername('user@example.com', '123455', (err, body) => {
+auth.loginUsername('user@example.com', '123455', (err, body) => {
   if (err) throw err
   console.log(body.token)
-  console.log(body.user.id)
-  console.log(body.user.legacy_id)
+  console.log(body.user)
 })
 ```
 <a name="Transactions"></a>
