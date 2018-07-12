@@ -20,7 +20,7 @@ if (process.env.SYSTEM_TEST) {
 }
 
 test('v0.Auth: Can login with username password', function (t) {
-  const Auth = require('../../lib/v0/auth').Auth
+  const Auth = require('../../lib').v0.Auth
 
   const auth = new Auth()
   t.ok(auth)
@@ -55,7 +55,7 @@ test('v0.Auth: Can login with username password', function (t) {
 })
 
 test('v1.Auth: Can login with api key', function (t) {
-  const Auth = require('../../lib/v1/auth').Auth
+  const Auth = require('../../lib').v1.Auth
 
   const auth = new Auth()
   t.ok(auth)
