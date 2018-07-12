@@ -14,6 +14,17 @@
 </dd>
 </dl>
 
+## Typedefs
+
+<dl>
+<dt><a href="#authResponseStruct">authResponseStruct</a> : <code>Object</code></dt>
+<dd><p>Object that is returned by all authentication methods.</p>
+</dd>
+<dt><a href="#authCallback">authCallback</a> : <code>function</code></dt>
+<dd><p>Callback that will be passed by all authentication methods.</p>
+</dd>
+</dl>
+
 <a name="v0.Auth"></a>
 
 ## v0.Auth
@@ -61,22 +72,25 @@ Authenticate an app via different auth strategies
 **Extends**: <code>&quot;v0.Auth&quot;</code>  
 
 * [Auth](#Auth) ⇐ <code>&quot;v0.Auth&quot;</code>
-    * [.loginUsername(username, password)](#Auth+loginUsername)
-    * [.loginServiceAccount(clientAccount, apiKey)](#Auth+loginServiceAccount)
+    * [.loginUsername(username, password, [callback])](#Auth+loginUsername)
+    * [.loginServiceAccount(clientAccount, apiKey, [callback])](#Auth+loginServiceAccount)
 
 <a name="Auth+loginUsername"></a>
 
-### auth.loginUsername(username, password)
+### auth.loginUsername(username, password, [callback])
+Authenticate by username
+
 **Kind**: instance method of [<code>Auth</code>](#Auth)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | username | <code>String</code> | the tillhub client account e-mail address |
-| password | <code>String</code> | the password corresponding to the tillhub client account |
+| password | <code>String</code> | the password corresponding to the tillhub client account\ |
+| [callback] | [<code>authCallback</code>](#authCallback) | optional callback |
 
 <a name="Auth+loginServiceAccount"></a>
 
-### auth.loginServiceAccount(clientAccount, apiKey)
+### auth.loginServiceAccount(clientAccount, apiKey, [callback])
 Authenticate as headless service account.
 
 **Kind**: instance method of [<code>Auth</code>](#Auth)  
@@ -85,6 +99,7 @@ Authenticate as headless service account.
 | --- | --- | --- |
 | clientAccount | <code>String</code> | tillhub client account uuid |
 | apiKey | <code>String</code> | name of service account (a type of user in the registered in the client account) |
+| [callback] | [<code>authCallback</code>](#authCallback) | optional callback |
 
 <a name="Products"></a>
 
@@ -103,4 +118,28 @@ Get all products from client account.
 | --- | --- | --- |
 | [queryOrCallback] | <code>Object</code> \| <code>function</code> | query for products with allowed paramaters, or specify an optional callback |
 | [callback] | <code>function</code> | optional callback. If not specified, this function returns a promise |
+
+<a name="authResponseStruct"></a>
+
+## authResponseStruct : <code>Object</code>
+Object that is returned by all authentication methods.
+
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| token | <code>String</code> | JWT token that will be used as Bearer Token in subsequent requests |
+| user | <code>boolean</code> | the alphanumeric client account ID that will be used in most routes |
+
+<a name="authCallback"></a>
+
+## authCallback : <code>function</code>
+Callback that will be passed by all authentication methods.
+
+**Kind**: global typedef  
+
+| Param | Type |
+| --- | --- |
+| body | [<code>authResponseStruct</code>](#authResponseStruct) | 
 
