@@ -117,11 +117,10 @@ const errors = require('../errors')
  * const Auth = require('@tillhub/node-sdk').v1.Auth
  * const auth = new Auth ()
  *
- * pubsub.loginServiceAccount('user@example.com', '123455', (err, body) => {
+ * auth.loginServiceAccount('EDDB2494C2434EFE948655D6BA27E69A', '1c01a976-d133-4814-9b66-bbbda9f7bb64', (err, body) => {
  *   if (err) throw err
  *   console.log(body.token)
- *   console.log(body.user.id)
- *   console.log(body.user.legacy_id)
+ *   console.log(body.user)
  * })
  */
 class Auth extends AuthV0 {

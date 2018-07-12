@@ -105,8 +105,22 @@
       <h1>Tillhub Node.js SDK <a href="http://standardjs.com"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="js-standard-style"></a> <a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release"></a> <a href="https://codecov.io/gh/tillhub/tillhub-sdk-node"><img src="https://codecov.io/gh/tillhub/tillhub-sdk-node/branch/master/graph/badge.svg" alt="codecov"></a></h1><blockquote>
 <p>Abstraction for the Tillhub API</p>
 </blockquote>
-<h2>Docs</h2><p>Visit the API documention <a href="https://tillhub.github.io/tillhub-sdk-node/">here</a> or from the <a href="https://github.com/tillhub/tillhub-sdk-node/blob/master/API.md">tree</a>.</p>
-<h2>License</h2><p>MIT</p>
+<h2>Getting Started</h2><pre class="prettyprint source lang-bash"><code>npm i @tillhub/node-sdk</code></pre><p>A simple use case for consumers is making authenticated requests with token they can get from different auth schemes and or resources, e.g. from a user, a register a service account, etc. We are abstracting this in the auth class(es).</p>
+<pre class="prettyprint source lang-js"><code>const Auth = require('@tillhub/node-sdk').v1.Auth
+const auth = new Auth()
+// or
+// const auth = new Auth({ base: 'https://staging-api.tillhub.com'})
+
+auth.loginServiceAccount('EDDB2494C2434EFE948655D6BA27E69A', '1bc3d7a5-48e5-46de-81e8-4205ee52130f', (err, body) => {
+  if (err) throw err
+
+  console.log('==============Token===============')
+  console.log(body.token)
+  console.log('===========client account=========')
+  console.log(body.user)
+  console.log('==================================')
+})</code></pre><h2>Docs</h2><p>Visit the API documention <a href="https://tillhub.github.io/tillhub-sdk-node/">here</a> or from the <a href="https://github.com/tillhub/tillhub-sdk-node/blob/master/API.md">tree</a>.</p>
+<h2>License</h2><p>Apache-2.0</p>
     </article>
   </section>
 

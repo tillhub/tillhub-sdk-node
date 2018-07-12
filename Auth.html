@@ -178,7 +178,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="v1_auth.js.html">v1/auth.js</a>, <a href="v1_auth.js.html#line24">line 24</a>
+          <a href="v1_auth.js.html">v1/auth.js</a>, <a href="v1_auth.js.html#line23">line 23</a>
         </li>
       </ul>
     </dd>
@@ -215,11 +215,10 @@
   <pre class="prettyprint"><code>const Auth = require('@tillhub/node-sdk').v1.Auth
 const auth = new Auth ()
 
-pubsub.loginServiceAccount('user@example.com', '123455', (err, body) => {
+auth.loginServiceAccount('EDDB2494C2434EFE948655D6BA27E69A', '1c01a976-d133-4814-9b66-bbbda9f7bb64', (err, body) => {
   if (err) throw err
   console.log(body.token)
-  console.log(body.user.id)
-  console.log(body.user.legacy_id)
+  console.log(body.user)
 })</code></pre>
 
 
@@ -404,7 +403,7 @@ pubsub.loginServiceAccount('user@example.com', '123455', (err, body) => {
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="v1_auth.js.html">v1/auth.js</a>, <a href="v1_auth.js.html#line52">line 52</a>
+          <a href="v1_auth.js.html">v1/auth.js</a>, <a href="v1_auth.js.html#line51">line 51</a>
         </li>
       </ul>
     </dd>
@@ -575,7 +574,7 @@ pubsub.loginServiceAccount('user@example.com', '123455', (err, body) => {
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="v0_auth.js.html">v0/auth.js</a>, <a href="v0_auth.js.html#line45">line 45</a>
+          <a href="v0_auth.js.html">v0/auth.js</a>, <a href="v0_auth.js.html#line44">line 44</a>
         </li>
       </ul>
     </dd>
