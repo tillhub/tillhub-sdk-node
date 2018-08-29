@@ -60,7 +60,7 @@ Get all transactions from client account.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [queryOrCallback] | <code>Object</code> \| <code>function</code> | query for transactions with allowed paramaters, or specify an optional callback |
+| [queryOrCallback] | <code>Object</code> \| <code>function</code> | query for transactions with allowed parameters, or specify an optional callback |
 | [callback] | <code>function</code> | optional callback. If not specified, this function returns a promise |
 
 <a name="Auth"></a>
@@ -116,7 +116,7 @@ Get all products from client account.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [queryOrCallback] | <code>Object</code> \| <code>function</code> | query for products with allowed paramaters, or specify an optional callback |
+| [queryOrCallback] | <code>Object</code> \| <code>function</code> | query for products with allowed parameters, or specify an optional callback |
 | [callback] | <code>function</code> | optional callback. If not specified, this function returns a promise |
 
 <a name="authResponseStruct"></a>
