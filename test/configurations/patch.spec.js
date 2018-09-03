@@ -95,12 +95,12 @@ test('Configuration - PATCH: can get different of 2 objects', function (t) {
     t.ok(config)
     t.ok(config.http)
     t.ok(config instanceof Configurations)
-    t.end()
 
     config.patch({ objectOne: object1, objectTwo: object2 }, (err, results) => {
       t.error(err)
       t.deepEqual(results, expectedObject)
       t.ok(Array.isArray(results))
+      t.end()
     })
   })
 })
