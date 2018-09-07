@@ -1,3 +1,10 @@
+## [0.5.6](https://github.com/tillhub/tillhub-sdk-node/compare/v0.5.5...v0.5.6) (2018-09-07)
+
+
+### Bug Fixes
+
+* **docs:** fixes exclusing of API.md ([00ff146](https://github.com/tillhub/tillhub-sdk-node/commit/00ff146))
+
 ## [0.5.5](https://github.com/tillhub/tillhub-sdk-node/compare/v0.5.4...v0.5.5) (2018-09-07)
 
 

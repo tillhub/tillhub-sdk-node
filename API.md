@@ -9,8 +9,11 @@
 <dt><a href="#Auth">Auth</a> ⇐ <code>&quot;v0.Auth&quot;</code></dt>
 <dd><p>Authenticate an app via different auth strategies</p>
 </dd>
+<dt><a href="#Carts">Carts</a></dt>
+<dd><p>Handle Tillhub Carts from the v1 Model</p>
+</dd>
 <dt><a href="#Products">Products</a></dt>
-<dd><p>Handle Tillhub Transactions from the v0 Model</p>
+<dd><p>Handle Tillhub Products from the v1 Model</p>
 </dd>
 </dl>
 
@@ -101,10 +104,46 @@ Authenticate as headless service account.
 | apiKey | <code>String</code> | name of service account (a type of user in the registered in the client account) |
 | [callback] | [<code>authCallback</code>](#authCallback) | optional callback |
 
+<a name="Carts"></a>
+
+## Carts
+Handle Tillhub Carts from the v1 Model
+
+**Kind**: global class  
+
+* [Carts](#Carts)
+    * [.getAll([queryOrCallback], [callback])](#Carts+getAll)
+    * [.create(cart, [optionsOrCallback], [callback])](#Carts+create)
+
+<a name="Carts+getAll"></a>
+
+### carts.getAll([queryOrCallback], [callback])
+Get all carts from client account.
+
+**Kind**: instance method of [<code>Carts</code>](#Carts)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [queryOrCallback] | <code>Object</code> \| <code>function</code> | query for carts with allowed paramaters, or specify an optional callback |
+| [callback] | <code>function</code> | optional callback. If not specified, this function returns a promise |
+
+<a name="Carts+create"></a>
+
+### carts.create(cart, [optionsOrCallback], [callback])
+Create a cart to consume in Tillhub Clients.
+
+**Kind**: instance method of [<code>Carts</code>](#Carts)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| cart | <code>Object</code> | the cart body |
+| [optionsOrCallback] | <code>Object</code> \| <code>function</code> | query for carts with allowed paramaters, or specify an optional callback |
+| [callback] | <code>function</code> | optional callback. If not specified, this function returns a promise |
+
 <a name="Products"></a>
 
 ## Products
-Handle Tillhub Transactions from the v0 Model
+Handle Tillhub Products from the v1 Model
 
 **Kind**: global class  
 <a name="Products+getAll"></a>
