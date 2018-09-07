@@ -1,3 +1,10 @@
+## [0.5.5](https://github.com/tillhub/tillhub-sdk-node/compare/v0.5.4...v0.5.5) (2018-09-07)
+
+
+### Bug Fixes
+
+* **docs:** fixes combined example ([511dc47](https://github.com/tillhub/tillhub-sdk-node/commit/511dc47))
+
 ## [0.5.4](https://github.com/tillhub/tillhub-sdk-node/compare/v0.5.3...v0.5.4) (2018-09-07)
 
 
