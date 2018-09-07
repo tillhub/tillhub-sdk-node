@@ -1,3 +1,11 @@
+## [0.5.1](https://github.com/tillhub/tillhub-sdk-node/compare/v0.5.0...v0.5.1) (2018-09-07)
+
+
+### Bug Fixes
+
+* **docs:** fixes docs deploy ([e36c38d](https://github.com/tillhub/tillhub-sdk-node/commit/e36c38d))
+* fixes docs publish by adding SR step ([063dc44](https://github.com/tillhub/tillhub-sdk-node/commit/063dc44))
+
 # [0.5.0](https://github.com/tillhub/tillhub-sdk-node/compare/v0.4.5...v0.5.0) (2018-09-07)
 
 
