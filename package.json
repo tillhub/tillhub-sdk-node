@@ -1,6 +1,6 @@
 {
   "name": "@tillhub/node-sdk",
-  "version": "0.4.5",
+  "version": "0.5.0",
   "private": false,
   "description": "Tillhub SDK for Node.js.",
   "main": "./lib/index.js",
