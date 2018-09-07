@@ -71,7 +71,7 @@
     "nodemon": "^1.17.3",
     "nyc": "^11.7.1",
     "proxyquire": "^2.0.1",
-    "semantic-release": "^15.7.0",
+    "semantic-release": "^15.9.12",
     "sinon": "^5.0.3",
     "tap-spec": "^4.1.1",
     "tape": "^4.9.0",
