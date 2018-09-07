@@ -1,3 +1,10 @@
+## [0.5.2](https://github.com/tillhub/tillhub-sdk-node/compare/v0.5.1...v0.5.2) (2018-09-07)
+
+
+### Bug Fixes
+
+* fixes missing publish script ([3f5ea7a](https://github.com/tillhub/tillhub-sdk-node/commit/3f5ea7a))
+
 ## [0.5.1](https://github.com/tillhub/tillhub-sdk-node/compare/v0.5.0...v0.5.1) (2018-09-07)
 
 
