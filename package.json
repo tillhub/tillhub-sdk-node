@@ -146,7 +146,7 @@
     "publish": [
       {
         "path": "@semantic-release/exec",
-        "cmd": "npm run docs && npm run deploy-docs"
+        "cmd": "npm run docs && npm run docs:deploy"
       },
       "@semantic-release/npm",
       "@semantic-release/github"
