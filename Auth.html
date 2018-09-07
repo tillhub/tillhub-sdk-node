@@ -84,7 +84,7 @@
       Tillhub Node.js SDK
     </h3>
 
-    <h3>Classes</h3><ul><li id=""v0.Auth"-nav"><a href="-_v0.Auth_.html">"v0.Auth"</a></li><li id="Auth-nav"><a href="Auth.html">Auth</a><ul class='methods'><li data-type="method" id="Auth-loginServiceAccount-nav"><a href="Auth.html#loginServiceAccount">loginServiceAccount</a></li><li data-type="method" id="Auth-loginUsername-nav"><a href="Auth.html#loginUsername">loginUsername</a></li></ul></li><li id="Products-nav"><a href="Products.html">Products</a><ul class='methods'><li data-type="method" id="Products-getAll-nav"><a href="Products.html#getAll">getAll</a></li></ul></li><li id="Tillhub-nav"><a href="Tillhub.html">Tillhub</a><ul class='methods'><li data-type="method" id="Tillhub-init-nav"><a href="Tillhub.html#init">init</a></li><li data-type="method" id="Tillhub-products-nav"><a href="Tillhub.html#products">products</a></li><li data-type="method" id="Tillhub-transactions-nav"><a href="Tillhub.html#transactions">transactions</a></li></ul></li><li id="Transactions-nav"><a href="Transactions.html">Transactions</a><ul class='methods'><li data-type="method" id="Transactions-getAll-nav"><a href="Transactions.html#getAll">getAll</a></li></ul></li></ul>
+    <h3>Classes</h3><ul><li id=""v0.Auth"-nav"><a href="-_v0.Auth_.html">"v0.Auth"</a></li><li id="Auth-nav"><a href="Auth.html">Auth</a><ul class='methods'><li data-type="method" id="Auth-loginServiceAccount-nav"><a href="Auth.html#loginServiceAccount">loginServiceAccount</a></li><li data-type="method" id="Auth-loginUsername-nav"><a href="Auth.html#loginUsername">loginUsername</a></li></ul></li><li id="Carts-nav"><a href="Carts.html">Carts</a><ul class='methods'><li data-type="method" id="Carts-create-nav"><a href="Carts.html#create">create</a></li><li data-type="method" id="Carts-getAll-nav"><a href="Carts.html#getAll">getAll</a></li></ul></li><li id="Products-nav"><a href="Products.html">Products</a><ul class='methods'><li data-type="method" id="Products-getAll-nav"><a href="Products.html#getAll">getAll</a></li></ul></li><li id="Tillhub-nav"><a href="Tillhub.html">Tillhub</a><ul class='methods'><li data-type="method" id="Tillhub-carts-nav"><a href="Tillhub.html#carts">carts</a></li><li data-type="method" id="Tillhub-init-nav"><a href="Tillhub.html#init">init</a></li><li data-type="method" id="Tillhub-products-nav"><a href="Tillhub.html#products">products</a></li><li data-type="method" id="Tillhub-transactions-nav"><a href="Tillhub.html#transactions">transactions</a></li></ul></li><li id="Transactions-nav"><a href="Transactions.html">Transactions</a><ul class='methods'><li data-type="method" id="Transactions-getAll-nav"><a href="Transactions.html#getAll">getAll</a></li></ul></li></ul><h3 id="global-nav"><a href="global.html">Global</a></h3>
   </nav>
 
   <div id="main">
@@ -267,7 +267,7 @@ auth.loginServiceAccount('EDDB2494C2434EFE948655D6BA27E69A', '1c01a976-d133-4814
       </svg>
     </a>
     <h4 class="name" id="loginServiceAccount">
-      <span class="type-signature"></span>loginServiceAccount<span class="signature">(clientAccount, apiKey)</span><span class="type-signature"></span>
+      <span class="type-signature"></span>loginServiceAccount<span class="signature">(clientAccount, apiKey, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
     </h4>
   </span>
 
@@ -298,6 +298,8 @@ auth.loginServiceAccount('EDDB2494C2434EFE948655D6BA27E69A', '1c01a976-d133-4814
       <th>Type</th>
 
       
+        <th>Attributes</th>
+      
 
       
 
@@ -325,6 +327,14 @@ auth.loginServiceAccount('EDDB2494C2434EFE948655D6BA27E69A', '1c01a976-d133-4814
           
         </td>
 
+        
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
         
 
         
@@ -355,11 +365,58 @@ auth.loginServiceAccount('EDDB2494C2434EFE948655D6BA27E69A', '1c01a976-d133-4814
         </td>
 
         
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
+        
 
         
 
         <td class="description last">
           <p>name of service account (a type of user in the registered in the client account)</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>callback</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      <a href="global.html#authCallback">authCallback</a>
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>optional callback</p>
           
         </td>
       </tr>
@@ -403,7 +460,7 @@ auth.loginServiceAccount('EDDB2494C2434EFE948655D6BA27E69A', '1c01a976-d133-4814
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="v1_auth.js.html">v1/auth.js</a>, <a href="v1_auth.js.html#line51">line 51</a>
+          <a href="v1_auth.js.html">v1/auth.js</a>, <a href="v1_auth.js.html#line65">line 65</a>
         </li>
       </ul>
     </dd>
@@ -442,13 +499,17 @@ auth.loginServiceAccount('EDDB2494C2434EFE948655D6BA27E69A', '1c01a976-d133-4814
       </svg>
     </a>
     <h4 class="name" id="loginUsername">
-      <span class="type-signature"></span>loginUsername<span class="signature">(username, password)</span><span class="type-signature"></span>
+      <span class="type-signature"></span>loginUsername<span class="signature">(username, password, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
     </h4>
   </span>
 
   
 
 
+
+  <div class="description">
+    <p>Authenticate by username</p>
+  </div>
 
 
 
@@ -468,6 +529,8 @@ auth.loginServiceAccount('EDDB2494C2434EFE948655D6BA27E69A', '1c01a976-d133-4814
 
       <th>Type</th>
 
+      
+        <th>Attributes</th>
       
 
       
@@ -496,6 +559,14 @@ auth.loginServiceAccount('EDDB2494C2434EFE948655D6BA27E69A', '1c01a976-d133-4814
           
         </td>
 
+        
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
         
 
         
@@ -526,11 +597,58 @@ auth.loginServiceAccount('EDDB2494C2434EFE948655D6BA27E69A', '1c01a976-d133-4814
         </td>
 
         
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
+        
 
         
 
         <td class="description last">
-          <p>the password corresponding to the tillhub client account</p>
+          <p>the password corresponding to the tillhub client account\</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>callback</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      <a href="global.html#authCallback">authCallback</a>
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>optional callback</p>
           
         </td>
       </tr>
@@ -574,7 +692,7 @@ auth.loginServiceAccount('EDDB2494C2434EFE948655D6BA27E69A', '1c01a976-d133-4814
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="v0_auth.js.html">v0/auth.js</a>, <a href="v0_auth.js.html#line44">line 44</a>
+          <a href="v0_auth.js.html">v0/auth.js</a>, <a href="v0_auth.js.html#line46">line 46</a>
         </li>
       </ul>
     </dd>

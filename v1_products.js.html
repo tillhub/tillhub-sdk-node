@@ -86,7 +86,7 @@
       Tillhub Node.js SDK
     </h3>
 
-    <h3>Classes</h3><ul><li id=""v0.Auth"-nav"><a href="-_v0.Auth_.html">"v0.Auth"</a></li><li id="Auth-nav"><a href="Auth.html">Auth</a><ul class='methods'><li data-type="method" id="Auth-loginServiceAccount-nav"><a href="Auth.html#loginServiceAccount">loginServiceAccount</a></li><li data-type="method" id="Auth-loginUsername-nav"><a href="Auth.html#loginUsername">loginUsername</a></li></ul></li><li id="Products-nav"><a href="Products.html">Products</a><ul class='methods'><li data-type="method" id="Products-getAll-nav"><a href="Products.html#getAll">getAll</a></li></ul></li><li id="Tillhub-nav"><a href="Tillhub.html">Tillhub</a><ul class='methods'><li data-type="method" id="Tillhub-init-nav"><a href="Tillhub.html#init">init</a></li><li data-type="method" id="Tillhub-products-nav"><a href="Tillhub.html#products">products</a></li><li data-type="method" id="Tillhub-transactions-nav"><a href="Tillhub.html#transactions">transactions</a></li></ul></li><li id="Transactions-nav"><a href="Transactions.html">Transactions</a><ul class='methods'><li data-type="method" id="Transactions-getAll-nav"><a href="Transactions.html#getAll">getAll</a></li></ul></li></ul>
+    <h3>Classes</h3><ul><li id=""v0.Auth"-nav"><a href="-_v0.Auth_.html">"v0.Auth"</a></li><li id="Auth-nav"><a href="Auth.html">Auth</a><ul class='methods'><li data-type="method" id="Auth-loginServiceAccount-nav"><a href="Auth.html#loginServiceAccount">loginServiceAccount</a></li><li data-type="method" id="Auth-loginUsername-nav"><a href="Auth.html#loginUsername">loginUsername</a></li></ul></li><li id="Carts-nav"><a href="Carts.html">Carts</a><ul class='methods'><li data-type="method" id="Carts-create-nav"><a href="Carts.html#create">create</a></li><li data-type="method" id="Carts-getAll-nav"><a href="Carts.html#getAll">getAll</a></li></ul></li><li id="Products-nav"><a href="Products.html">Products</a><ul class='methods'><li data-type="method" id="Products-getAll-nav"><a href="Products.html#getAll">getAll</a></li></ul></li><li id="Tillhub-nav"><a href="Tillhub.html">Tillhub</a><ul class='methods'><li data-type="method" id="Tillhub-carts-nav"><a href="Tillhub.html#carts">carts</a></li><li data-type="method" id="Tillhub-init-nav"><a href="Tillhub.html#init">init</a></li><li data-type="method" id="Tillhub-products-nav"><a href="Tillhub.html#products">products</a></li><li data-type="method" id="Tillhub-transactions-nav"><a href="Tillhub.html#transactions">transactions</a></li></ul></li><li id="Transactions-nav"><a href="Transactions.html">Transactions</a><ul class='methods'><li data-type="method" id="Transactions-getAll-nav"><a href="Transactions.html#getAll">getAll</a></li></ul></li></ul><h3 id="global-nav"><a href="global.html">Global</a></h3>
   </nav>
 
   <div id="main">
@@ -106,7 +106,7 @@ const typeOf = require('just-typeof')
 const safeSet = require('just-safe-set')
 
 /**
- * Handle Tillhub Transactions from the v0 Model
+ * Handle Tillhub Products from the v1 Model
  *
  * @class
  *
@@ -121,7 +121,7 @@ const safeSet = require('just-safe-set')
  * })
  *
  * await th.init()
- * const products = th.Products()
+ * const products = th.products()
  *
  * const { data, metadata } = await products.getAll()
  * console.log(data) // [...]
@@ -196,7 +196,7 @@ class Products extends EventEmitter {
         return callback(null, body.results, { count: body.count, cursor: body.cursor }, next)
       }
 
-      return callback(new Error('tillhub: could not get transactions'), body, resp)
+      return callback(new Error('tillhub: could not get products'), body, resp)
     })
   }
 }

@@ -86,7 +86,7 @@
       Tillhub Node.js SDK
     </h3>
 
-    <h3>Classes</h3><ul><li id=""v0.Auth"-nav"><a href="-_v0.Auth_.html">"v0.Auth"</a></li><li id="Auth-nav"><a href="Auth.html">Auth</a><ul class='methods'><li data-type="method" id="Auth-loginServiceAccount-nav"><a href="Auth.html#loginServiceAccount">loginServiceAccount</a></li><li data-type="method" id="Auth-loginUsername-nav"><a href="Auth.html#loginUsername">loginUsername</a></li></ul></li><li id="Products-nav"><a href="Products.html">Products</a><ul class='methods'><li data-type="method" id="Products-getAll-nav"><a href="Products.html#getAll">getAll</a></li></ul></li><li id="Tillhub-nav"><a href="Tillhub.html">Tillhub</a><ul class='methods'><li data-type="method" id="Tillhub-init-nav"><a href="Tillhub.html#init">init</a></li><li data-type="method" id="Tillhub-products-nav"><a href="Tillhub.html#products">products</a></li><li data-type="method" id="Tillhub-transactions-nav"><a href="Tillhub.html#transactions">transactions</a></li></ul></li><li id="Transactions-nav"><a href="Transactions.html">Transactions</a><ul class='methods'><li data-type="method" id="Transactions-getAll-nav"><a href="Transactions.html#getAll">getAll</a></li></ul></li></ul>
+    <h3>Classes</h3><ul><li id=""v0.Auth"-nav"><a href="-_v0.Auth_.html">"v0.Auth"</a></li><li id="Auth-nav"><a href="Auth.html">Auth</a><ul class='methods'><li data-type="method" id="Auth-loginServiceAccount-nav"><a href="Auth.html#loginServiceAccount">loginServiceAccount</a></li><li data-type="method" id="Auth-loginUsername-nav"><a href="Auth.html#loginUsername">loginUsername</a></li></ul></li><li id="Carts-nav"><a href="Carts.html">Carts</a><ul class='methods'><li data-type="method" id="Carts-create-nav"><a href="Carts.html#create">create</a></li><li data-type="method" id="Carts-getAll-nav"><a href="Carts.html#getAll">getAll</a></li></ul></li><li id="Products-nav"><a href="Products.html">Products</a><ul class='methods'><li data-type="method" id="Products-getAll-nav"><a href="Products.html#getAll">getAll</a></li></ul></li><li id="Tillhub-nav"><a href="Tillhub.html">Tillhub</a><ul class='methods'><li data-type="method" id="Tillhub-carts-nav"><a href="Tillhub.html#carts">carts</a></li><li data-type="method" id="Tillhub-init-nav"><a href="Tillhub.html#init">init</a></li><li data-type="method" id="Tillhub-products-nav"><a href="Tillhub.html#products">products</a></li><li data-type="method" id="Tillhub-transactions-nav"><a href="Tillhub.html#transactions">transactions</a></li></ul></li><li id="Transactions-nav"><a href="Transactions.html">Transactions</a><ul class='methods'><li data-type="method" id="Transactions-getAll-nav"><a href="Transactions.html#getAll">getAll</a></li></ul></li></ul><h3 id="global-nav"><a href="global.html">Global</a></h3>
   </nav>
 
   <div id="main">
@@ -102,7 +102,7 @@
 <section>
   <article>
     <pre class="prettyprint source linenums"><code>const EventEmitter = require('events')
-const request = require('retry-request')
+const request = require('request')
 
 const errors = require('../errors')
 
@@ -140,15 +140,13 @@ class Auth extends EventEmitter {
   }
 
   /**
+   * Authenticate by username
    *
    * @param {String} username the tillhub client account e-mail address
-   * @param {String} password the password corresponding to the tillhub client account
+   * @param {String} password the password corresponding to the tillhub client account\
+   * @param {authCallback} [callback] optional callback
    */
   loginUsername (username, password, callback) {
-    const opts = {
-      retries: 3
-    }
-
     const requestOptions = {
       uri: '/api/v0/users/login',
       baseUrl: this.options.base,
@@ -160,7 +158,7 @@ class Auth extends EventEmitter {
       }
     }
 
-    request(requestOptions, opts, (err, resp, body) => {
+    request(requestOptions, (err, resp, body) => {
       if (err) return callback(err)
 
       if (resp.statusCode === 200) {

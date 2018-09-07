@@ -86,7 +86,7 @@
       Tillhub Node.js SDK
     </h3>
 
-    <h3>Classes</h3><ul><li id=""v0.Auth"-nav"><a href="-_v0.Auth_.html">"v0.Auth"</a></li><li id="Auth-nav"><a href="Auth.html">Auth</a><ul class='methods'><li data-type="method" id="Auth-loginServiceAccount-nav"><a href="Auth.html#loginServiceAccount">loginServiceAccount</a></li><li data-type="method" id="Auth-loginUsername-nav"><a href="Auth.html#loginUsername">loginUsername</a></li></ul></li><li id="Products-nav"><a href="Products.html">Products</a><ul class='methods'><li data-type="method" id="Products-getAll-nav"><a href="Products.html#getAll">getAll</a></li></ul></li><li id="Tillhub-nav"><a href="Tillhub.html">Tillhub</a><ul class='methods'><li data-type="method" id="Tillhub-init-nav"><a href="Tillhub.html#init">init</a></li><li data-type="method" id="Tillhub-products-nav"><a href="Tillhub.html#products">products</a></li><li data-type="method" id="Tillhub-transactions-nav"><a href="Tillhub.html#transactions">transactions</a></li></ul></li><li id="Transactions-nav"><a href="Transactions.html">Transactions</a><ul class='methods'><li data-type="method" id="Transactions-getAll-nav"><a href="Transactions.html#getAll">getAll</a></li></ul></li></ul>
+    <h3>Classes</h3><ul><li id=""v0.Auth"-nav"><a href="-_v0.Auth_.html">"v0.Auth"</a></li><li id="Auth-nav"><a href="Auth.html">Auth</a><ul class='methods'><li data-type="method" id="Auth-loginServiceAccount-nav"><a href="Auth.html#loginServiceAccount">loginServiceAccount</a></li><li data-type="method" id="Auth-loginUsername-nav"><a href="Auth.html#loginUsername">loginUsername</a></li></ul></li><li id="Carts-nav"><a href="Carts.html">Carts</a><ul class='methods'><li data-type="method" id="Carts-create-nav"><a href="Carts.html#create">create</a></li><li data-type="method" id="Carts-getAll-nav"><a href="Carts.html#getAll">getAll</a></li></ul></li><li id="Products-nav"><a href="Products.html">Products</a><ul class='methods'><li data-type="method" id="Products-getAll-nav"><a href="Products.html#getAll">getAll</a></li></ul></li><li id="Tillhub-nav"><a href="Tillhub.html">Tillhub</a><ul class='methods'><li data-type="method" id="Tillhub-carts-nav"><a href="Tillhub.html#carts">carts</a></li><li data-type="method" id="Tillhub-init-nav"><a href="Tillhub.html#init">init</a></li><li data-type="method" id="Tillhub-products-nav"><a href="Tillhub.html#products">products</a></li><li data-type="method" id="Tillhub-transactions-nav"><a href="Tillhub.html#transactions">transactions</a></li></ul></li><li id="Transactions-nav"><a href="Transactions.html">Transactions</a><ul class='methods'><li data-type="method" id="Transactions-getAll-nav"><a href="Transactions.html#getAll">getAll</a></li></ul></li></ul><h3 id="global-nav"><a href="global.html">Global</a></h3>
   </nav>
 
   <div id="main">
@@ -101,7 +101,7 @@
 
 <section>
   <article>
-    <pre class="prettyprint source linenums"><code>const request = require('retry-request')
+    <pre class="prettyprint source linenums"><code>const request = require('request')
 
 const { Auth: AuthV0 } = require('../v0/auth')
 
@@ -146,10 +146,24 @@ class Auth extends AuthV0 {
   }
 
   /**
+   * Object that is returned by all authentication methods.
+   * @typedef {Object} authResponseStruct
+   * @property {String} token JWT token that will be used as Bearer Token in subsequent requests
+   * @property {boolean} user the alphanumeric client account ID that will be used in most routes
+   */
+
+  /**
+   * Callback that will be passed by all authentication methods.
+   * @callback authCallback
+   * @param {authResponseStruct} body
+   */
+
+  /**
    * Authenticate as headless service account.
    *
    * @param {String} clientAccount tillhub client account uuid
    * @param {String} apiKey name of service account (a type of user in the registered in the client account)
+   * @param {authCallback} [callback] optional callback
    */
   loginServiceAccount (clientAccount, apiKey, callback) {
     const requestOptions = {
