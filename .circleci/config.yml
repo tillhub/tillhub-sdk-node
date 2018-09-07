@@ -19,7 +19,6 @@ jobs:
           name: test
           command: npm test
       - run: npm run coverage
-      - run: git describe --exact-match --tags HEAD && npm run docs && npm run deploy-docs
       - run:
           name: release
           command: npm run semantic-release || true
