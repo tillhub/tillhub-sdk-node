@@ -83,6 +83,7 @@
     "@google-cloud/pubsub": "^0.18.0",
     "http-errors": "^1.6.3",
     "is": "^3.2.1",
+    "just-diff": "^2.2.0",
     "just-safe-set": "^2.0.1",
     "just-typeof": "^1.0.5",
     "pump": "^3.0.0",
