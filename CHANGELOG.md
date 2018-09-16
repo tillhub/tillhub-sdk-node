@@ -1,3 +1,11 @@
+# [0.8.0](https://github.com/tillhub/tillhub-sdk-node/compare/v0.7.0...v0.8.0) (2018-09-16)
+
+
+### Features
+
+* **api:** adds voucher logs ([87e223a](https://github.com/tillhub/tillhub-sdk-node/commit/87e223a))
+* **api:** adds vouchers api ([4a068f7](https://github.com/tillhub/tillhub-sdk-node/commit/4a068f7))
+
 # [0.7.0](https://github.com/tillhub/tillhub-sdk-node/compare/v0.6.0...v0.7.0) (2018-09-16)
 
 

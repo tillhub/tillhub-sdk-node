@@ -6,6 +6,12 @@
 <dt><a href="#Transactions">Transactions</a></dt>
 <dd><p>Handle Tillhub Transactions from the v0 Model</p>
 </dd>
+<dt><a href="#VoucherLogs">VoucherLogs</a></dt>
+<dd><p>Handle Tillhub Voucher Logs.</p>
+</dd>
+<dt><a href="#Vouchers">Vouchers</a></dt>
+<dd><p>Handle Tillhub Vouchers.</p>
+</dd>
 <dt><a href="#Auth">Auth</a> ⇐ <code>&quot;v0.Auth&quot;</code></dt>
 <dd><p>Authenticate an app via different auth strategies</p>
 </dd>
@@ -68,6 +74,74 @@ Get all transactions from client account.
 | Param | Type | Description |
 | --- | --- | --- |
 | [queryOrCallback] | <code>Object</code> \| <code>function</code> | query for transactions with allowed paramaters, or specify an optional callback |
+| [callback] | <code>function</code> | optional callback. If not specified, this function returns a promise |
+
+<a name="VoucherLogs"></a>
+
+## VoucherLogs
+Handle Tillhub Voucher Logs.
+
+**Kind**: global class  
+<a name="VoucherLogs+getAll"></a>
+
+### voucherLogs.getAll([queryOrCallback], [callback])
+Get all voucher logs for a client account.
+
+**Kind**: instance method of [<code>VoucherLogs</code>](#VoucherLogs)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [queryOrCallback] | <code>Object</code> \| <code>function</code> | query for voucher logs with allowed paramaters, or specify an optional callback |
+| [callback] | <code>function</code> | optional callback. If not specified, this function returns a promise |
+
+<a name="Vouchers"></a>
+
+## Vouchers
+Handle Tillhub Vouchers.
+
+**Kind**: global class  
+
+* [Vouchers](#Vouchers)
+    * [.create(body, [optionsOrCallback], [callback])](#Vouchers+create)
+    * [.put(body, [optionsOrCallback], [callback])](#Vouchers+put)
+    * [.getAll([queryOrCallback], [callback])](#Vouchers+getAll)
+
+<a name="Vouchers+create"></a>
+
+### vouchers.create(body, [optionsOrCallback], [callback])
+Create a voucher.
+
+**Kind**: instance method of [<code>Vouchers</code>](#Vouchers)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| body | <code>Object</code> | object defining a voucher |
+| [optionsOrCallback] | <code>Object</code> \| <code>function</code> | options for voucher with allowed paramaters, or specify an optional callback |
+| [callback] | <code>function</code> | optional callback. If not specified, this function returns a promise |
+
+<a name="Vouchers+put"></a>
+
+### vouchers.put(body, [optionsOrCallback], [callback])
+Replace propertise on a voucher.
+
+**Kind**: instance method of [<code>Vouchers</code>](#Vouchers)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| body | <code>Object</code> | object defining voucher properties |
+| [optionsOrCallback] | <code>Object</code> \| <code>function</code> | options for vouchers with allowed paramaters, or specify an optional callback |
+| [callback] | <code>function</code> | optional callback. If not specified, this function returns a promise |
+
+<a name="Vouchers+getAll"></a>
+
+### vouchers.getAll([queryOrCallback], [callback])
+Get all vouchers from client account.
+
+**Kind**: instance method of [<code>Vouchers</code>](#Vouchers)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [queryOrCallback] | <code>Object</code> \| <code>function</code> | query for vouchers with allowed paramaters, or specify an optional callback |
 | [callback] | <code>function</code> | optional callback. If not specified, this function returns a promise |
 
 <a name="Auth"></a>
@@ -192,7 +266,7 @@ Create a template.
 <a name="Templates+put"></a>
 
 ### templates.put(body, [optionsOrCallback], [callback])
-Replance propertise on a template.
+Replace propertise on a template.
 
 **Kind**: instance method of [<code>Templates</code>](#Templates)  
 
