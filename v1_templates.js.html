@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      index.js - Documentation
+      v1/templates.js - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -92,7 +92,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        index.js
+        v1/templates.js
       </h1>
     
 
@@ -102,17 +102,12 @@
 <section>
   <article>
     <pre class="prettyprint source linenums"><code>const EventEmitter = require('events')
-const request = require('request')
-const errors = require('./errors')
-
-const { Auth } = require('./v1/auth')
-const { Transactions } = require('./v0/transactions')
-const { Products } = require('./v1/products')
-const { Carts } = require('./v1/carts')
-const { Templates } = require('./v1/templates')
+const typeOf = require('just-typeof')
 
 /**
- * Tillhub SDK instance. The instance handles auth autonomously.
+ * Handle Tillhub Templates from the v1 Model.
+ *
+ * Templates will drive email and document behaviours and layouts.
  *
  * @class
  *
@@ -127,103 +122,188 @@ const { Templates } = require('./v1/templates')
  * })
  *
  * await th.init()
+ * const templates = th.templates()
  *
- * // do something with the instance
- * const transactions = th.transactions()
- *
- * const { data, metadata } = await transactions.getAll()
+ * const { data, metadata } = await templates.getAll()
  * console.log(data) // [...]
  *
  */
-class Tillhub extends EventEmitter {
-  constructor (options = {}) {
+class Templates extends EventEmitter {
+  constructor (options = {}, http) {
     super()
     this.options = {
-      base: process.env.TILLHUB_BASE || 'https://api.tillhub.com',
       ...options
     }
 
-    this.auth = null
-    this.http = null
+    this.endpoint = '/api/v1/templates'
+
+    this.http = http
   }
 
   /**
-   * Initialise the SDK instance by authenticating the client
+   * Create a template.
    *
-   * @param {Function?} callback optional callback. I fnot specified a Promise will be returned
+   * @param {Object} body object defining a template
+   * @param {Object|Function} [optionsOrCallback] options for templates with allowed paramaters, or specify an optional callback
+   * @param {Function} [callback] optional callback. If not specified, this function returns a promise
    */
-  init (callback) {
-    if (!this.options.credentials) {
-      return callback(errors.generate(errors.constants.INSUFFICIENT_CREDENTIALS))
+  create (body, optionsOrCallback, callback) {
+    if (typeOf(body) !== 'object') {
+      return callback(new TypeError('tillhub: body parameter must be object'))
     }
 
-    this.auth = new Auth({ credentials: this.options.credentials })
+    if (!callback &amp;&amp; typeof optionsOrCallback === 'function') {
+      callback = optionsOrCallback
+      optionsOrCallback = {}
+    }
 
-    this.auth.authenticate((err, authResponse) => {
+    if (typeOf(optionsOrCallback) !== 'object') {
+      return callback(new TypeError('query parameter must be object'))
+    }
+
+    let requestOptions = {
+      json: true,
+      body
+    }
+
+    // user, but more often this function itself can override the URI
+    // property. This will be used for paging out and providing a callable function,
+    // later on
+    if (!optionsOrCallback.uri) {
+      requestOptions = {
+        ...requestOptions,
+        uri: `${this.endpoint}/${this.options.user}`,
+        baseUrl: this.options.base,
+        method: 'POST'
+      }
+    } else {
+      requestOptions = {
+        ...requestOptions,
+        uri: optionsOrCallback.uri,
+        method: 'POST'
+      }
+    }
+
+    this.http(requestOptions, (err, resp, body) => {
       if (err) return callback(err)
 
-      this.user = authResponse.user
+      if (resp.statusCode === 200) {
+        return callback(null, body.results, { count: body.count, cursor: body.cursor })
+      }
 
-      this.http = request.defaults({
-        headers: {
-          'Authorization': `Bearer ${authResponse.token}`,
-          'X-Client-ID': authResponse.user
-        }
-      })
-
-      return callback(null, this, this.auth)
+      return callback(new Error('tillhub: could not create template'), body, resp)
     })
   }
 
   /**
-   * Create an authenticated transactions instance
+   * Replance propertise on a template.
    *
-   * @param {Object} options options object
-   * @return {Transactions} transactions instance
+   * @param {Object} body object defining template properties
+   * @param {Object|Function} [optionsOrCallback] options for templates with allowed paramaters, or specify an optional callback
+   * @param {Function} [callback] optional callback. If not specified, this function returns a promise
    */
-  transactions (options) {
-    if (!this.http) throw errors.generate(errors.constants.UNINSTANTIATED_HTTP_CLIENT)
-    return new Transactions({ user: this.user, base: this.options.base, ...options }, this.http)
+  put (body, optionsOrCallback, callback) {
+    if (typeOf(body) !== 'object') {
+      return callback(new TypeError('tillhub: body parameter must be object'))
+    }
+
+    if (!callback &amp;&amp; typeof optionsOrCallback === 'function') {
+      callback = optionsOrCallback
+      optionsOrCallback = {}
+    }
+
+    if (typeOf(optionsOrCallback) !== 'object') {
+      return callback(new TypeError('query parameter must be object'))
+    }
+
+    let requestOptions = {
+      json: true,
+      body
+    }
+
+    // user, but more often this function itself can override the URI
+    // property. This will be used for paging out and providing a callable function,
+    // later on
+    if (!optionsOrCallback.uri) {
+      requestOptions = {
+        ...requestOptions,
+        uri: `${this.endpoint}/${this.options.user}`,
+        baseUrl: this.options.base,
+        method: 'PUT'
+      }
+    } else {
+      requestOptions = {
+        ...requestOptions,
+        uri: optionsOrCallback.uri,
+        method: 'PUT'
+      }
+    }
+
+    this.http(requestOptions, (err, resp, body) => {
+      if (err) return callback(err)
+
+      if (resp.statusCode === 200) {
+        return callback(null, body.results, { count: body.count, cursor: body.cursor })
+      }
+
+      return callback(new Error('tillhub: could not put template'), body, resp)
+    })
   }
 
   /**
-   * Create an authenticated products instance
+   * Get all templates from client account.
    *
-   * @param {Object} options options object
-   * @return {Products} products instance
+   * @param {Object|Function} [queryOrCallback] query for templates with allowed paramaters, or specify an optional callback
+   * @param {Function} [callback] optional callback. If not specified, this function returns a promise
    */
-  products (options) {
-    if (!this.http) throw errors.generate(errors.constants.UNINSTANTIATED_HTTP_CLIENT)
-    return new Products({ user: this.user, base: this.options.base, ...options }, this.http)
-  }
+  getAll (queryOrCallback, callback) {
+    if (!callback &amp;&amp; typeof queryOrCallback === 'function') {
+      callback = queryOrCallback
+      queryOrCallback = {}
+    }
 
-  /**
-   * Create an authenticated carts instance
-   *
-   * @param {Object} options options object
-   * @return {Carts} cart instance
-   */
-  carts (options) {
-    if (!this.http) throw errors.generate(errors.constants.UNINSTANTIATED_HTTP_CLIENT)
-    return new Carts({ user: this.user, base: this.options.base, ...options }, this.http)
-  }
+    if (typeOf(queryOrCallback) !== 'object') {
+      return callback(new TypeError('query parameter must be object'))
+    }
 
-  /**
-   * Create an authenticated templates instance
-   *
-   * @param {Object} options options object
-   * @return {Templates} cart instance
-   */
-  templates (options) {
-    if (!this.http) throw errors.generate(errors.constants.UNINSTANTIATED_HTTP_CLIENT)
-    return new Templates({ user: this.user, base: this.options.base, ...options }, this.http)
+    let requestOptions = {
+      json: true
+    }
+
+    // user, but more often this function itself can override the URI
+    // property. This will be used for paging out and providing a callable function,
+    // later on
+    if (!queryOrCallback.uri) {
+      requestOptions = {
+        ...requestOptions,
+        uri: `${this.endpoint}/${this.options.user}`,
+        baseUrl: this.options.base,
+        qs: queryOrCallback.qs,
+        method: 'GET'
+      }
+    } else {
+      requestOptions = {
+        ...requestOptions,
+        uri: queryOrCallback.uri,
+        method: 'GET'
+      }
+    }
+
+    this.http(requestOptions, (err, resp, body) => {
+      if (err) return callback(err)
+
+      if (resp.statusCode === 200) {
+        return callback(null, body.results, { count: body.count, cursor: body.cursor })
+      }
+
+      return callback(new Error('tillhub: could not get templates'), body, resp)
+    })
   }
 }
 
-module.exports = Tillhub
-module.exports.Tillhub = Tillhub
-module.exports.v0 = require('./v0')
-module.exports.v1 = require('./v1')
+module.exports = {
+  Templates
+}
 </code></pre>
   </article>
 </section>
