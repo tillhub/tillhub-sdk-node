@@ -1,3 +1,10 @@
+## [0.8.1](https://github.com/tillhub/tillhub-sdk-node/compare/v0.8.0...v0.8.1) (2018-09-16)
+
+
+### Bug Fixes
+
+* **build:** fixes deploy script ([e5ab248](https://github.com/tillhub/tillhub-sdk-node/commit/e5ab248))
+
 # [0.8.0](https://github.com/tillhub/tillhub-sdk-node/compare/v0.7.0...v0.8.0) (2018-09-16)
 
 
