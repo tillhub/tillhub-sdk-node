@@ -165,7 +165,7 @@ test('v1: Products: can fetch paged products', function (t) {
       }
 
       next((err) => {
-        t.error(err, data, metadata, next)
+        t.error(err)
 
         t.ok(Array.isArray(data))
         t.equals(data.length, 2)
