@@ -18,8 +18,7 @@
     "commit": "npm run precommit && git-cz",
     "preversion": "npm run lint && npm test && npm run docs:md && git add -A .",
     "postversion": "TAG=$(echo $(git describe --tags $(git rev-list --tags --max-count=1))) && git tag -a $TAG $TAG -f -m \"$(git log `git describe --tags --abbrev=0 HEAD^`..HEAD --oneline)\" && git push && git push --tags && npm run clean",
-    "clean": "rm -rf coverage coverage.lcov .nyc_output",
-    "publish": "npm publish --access=public"
+    "clean": "rm -rf coverage coverage.lcov .nyc_output"
   },
   "repository": {
     "type": "git",
