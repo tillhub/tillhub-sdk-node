@@ -15,6 +15,10 @@
 <dt><a href="#Products">Products</a></dt>
 <dd><p>Handle Tillhub Products from the v1 Model</p>
 </dd>
+<dt><a href="#Templates">Templates</a></dt>
+<dd><p>Handle Tillhub Templates from the v1 Model.</p>
+<p>Templates will drive email and document behaviours and layouts.</p>
+</dd>
 </dl>
 
 ## Typedefs
@@ -156,6 +160,58 @@ Get all products from client account.
 | Param | Type | Description |
 | --- | --- | --- |
 | [queryOrCallback] | <code>Object</code> \| <code>function</code> | query for products with allowed paramaters, or specify an optional callback |
+| [callback] | <code>function</code> | optional callback. If not specified, this function returns a promise |
+
+<a name="Templates"></a>
+
+## Templates
+Handle Tillhub Templates from the v1 Model.
+
+Templates will drive email and document behaviours and layouts.
+
+**Kind**: global class  
+
+* [Templates](#Templates)
+    * [.create(body, [optionsOrCallback], [callback])](#Templates+create)
+    * [.put(body, [optionsOrCallback], [callback])](#Templates+put)
+    * [.getAll([queryOrCallback], [callback])](#Templates+getAll)
+
+<a name="Templates+create"></a>
+
+### templates.create(body, [optionsOrCallback], [callback])
+Create a template.
+
+**Kind**: instance method of [<code>Templates</code>](#Templates)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| body | <code>Object</code> | object defining a template |
+| [optionsOrCallback] | <code>Object</code> \| <code>function</code> | options for templates with allowed paramaters, or specify an optional callback |
+| [callback] | <code>function</code> | optional callback. If not specified, this function returns a promise |
+
+<a name="Templates+put"></a>
+
+### templates.put(body, [optionsOrCallback], [callback])
+Replance propertise on a template.
+
+**Kind**: instance method of [<code>Templates</code>](#Templates)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| body | <code>Object</code> | object defining template properties |
+| [optionsOrCallback] | <code>Object</code> \| <code>function</code> | options for templates with allowed paramaters, or specify an optional callback |
+| [callback] | <code>function</code> | optional callback. If not specified, this function returns a promise |
+
+<a name="Templates+getAll"></a>
+
+### templates.getAll([queryOrCallback], [callback])
+Get all templates from client account.
+
+**Kind**: instance method of [<code>Templates</code>](#Templates)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [queryOrCallback] | <code>Object</code> \| <code>function</code> | query for templates with allowed paramaters, or specify an optional callback |
 | [callback] | <code>function</code> | optional callback. If not specified, this function returns a promise |
 
 <a name="authResponseStruct"></a>

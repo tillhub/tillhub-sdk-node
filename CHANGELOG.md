@@ -1,3 +1,15 @@
+# [0.6.0](https://github.com/tillhub/tillhub-sdk-node/compare/v0.5.6...v0.6.0) (2018-09-16)
+
+
+### Bug Fixes
+
+* fixes base url; removes paging in carts ([4c7817e](https://github.com/tillhub/tillhub-sdk-node/commit/4c7817e))
+
+
+### Features
+
+* adds template ([db245e1](https://github.com/tillhub/tillhub-sdk-node/commit/db245e1))
+
 ## [0.5.6](https://github.com/tillhub/tillhub-sdk-node/compare/v0.5.5...v0.5.6) (2018-09-07)
 
 
