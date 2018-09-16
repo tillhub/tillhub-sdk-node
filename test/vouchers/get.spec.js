@@ -15,7 +15,7 @@ if (process.env.SYSTEM_TEST) {
   user.password = process.env.SYSTEM_TEST_PASSWORD || user.password
 }
 
-test('v1: Vouchers: can fetch some vouchers', function (t) {
+test('v0: Vouchers: can fetch some vouchers', function (t) {
   const Tillhub = require('../../lib/').Tillhub
   const Vouchers = require('../../lib/v0/vouchers').Vouchers
 
