@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/tillhub/tillhub-sdk-node/compare/v0.6.0...v0.7.0) (2018-09-16)
+
+
+### Features
+
+* **deps:** updates all deps ([fd90a38](https://github.com/tillhub/tillhub-sdk-node/commit/fd90a38))
+
 # [0.6.0](https://github.com/tillhub/tillhub-sdk-node/compare/v0.5.6...v0.6.0) (2018-09-16)
 
 
