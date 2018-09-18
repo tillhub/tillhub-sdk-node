@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@tillhub/node-sdk": "*"
+    "@google-cloud/pubsub": "^0.20.0",
+    "@tillhub/node-sdk": "latest"
   },
   "devDependencies": {
     "node": "^10.10.0"
