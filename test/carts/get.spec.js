@@ -56,7 +56,7 @@ test('v1: carts: can fetch some carts', function (t) {
     })
   }
 
-  th.init((err, client, authInstance) => {
+  th.init((err, authResponse, client, authInstance) => {
     t.error(err)
 
     const carts = th.carts()

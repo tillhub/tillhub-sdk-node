@@ -68,7 +68,7 @@ test('v1: carts: can create cart from existing products', function (t) {
       })
   }
 
-  th.init((err, client, authInstance) => {
+  th.init((err, authResponse, client, authInstance) => {
     t.error(err)
 
     const carts = th.carts()

@@ -56,7 +56,7 @@ test('v1: Templates: can create template', function (t) {
     })
   }
 
-  th.init((err, client, authInstance) => {
+  th.init((err, authResponse, client, authInstance) => {
     t.error(err)
 
     const templates = th.templates()

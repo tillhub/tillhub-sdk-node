@@ -56,7 +56,7 @@ test('v0: Transactions: can fetch some transactions', function (t) {
     })
   }
 
-  th.init((err, client, authInstance) => {
+  th.init((err, authResponse, client, authInstance) => {
     t.error(err)
 
     const transactions = th.transactions()
@@ -126,7 +126,7 @@ test('v0: Transactions: can fetch paged transactions', function (t) {
       })
   }
 
-  th.init((err, client, authInstance) => {
+  th.init((err, authResponse, client, authInstance) => {
     t.error(err)
 
     const transactions = th.transactions()

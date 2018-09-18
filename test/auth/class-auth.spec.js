@@ -57,7 +57,7 @@ test('root: Can init with auth credentials', function (t) {
     })
   }
 
-  th.init((err, client, authInstance) => {
+  th.init((err, authResponse, client, authInstance) => {
     t.error(err)
 
     t.ok(th.auth)

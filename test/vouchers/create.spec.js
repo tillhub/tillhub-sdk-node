@@ -56,7 +56,7 @@ test('v0: Vouchers: can create voucher', function (t) {
     })
   }
 
-  th.init((err, client, authInstance) => {
+  th.init((err, authResponse, client, authInstance) => {
     t.error(err)
 
     const vouchers = th.vouchers()

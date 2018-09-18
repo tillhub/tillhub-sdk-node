@@ -56,7 +56,7 @@ test('v1: products: can fetch some products', function (t) {
     })
   }
 
-  th.init((err, client, authInstance) => {
+  th.init((err, authResponse, client, authInstance) => {
     t.error(err)
 
     const products = th.products()
@@ -126,7 +126,7 @@ test('v1: Products: can fetch paged products', function (t) {
       })
   }
 
-  th.init((err, client, authInstance) => {
+  th.init((err, authResponse, client, authInstance) => {
     t.error(err)
 
     const products = th.products()
