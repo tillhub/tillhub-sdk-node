@@ -11,7 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "@google-cloud/pubsub": "^0.20.0",
-    "@tillhub/node-sdk": "latest"
+    "@tillhub/node-sdk": "latest",
+    "dotenv": "^6.0.0"
   },
   "devDependencies": {
     "node": "^10.10.0"
