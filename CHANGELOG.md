@@ -1,3 +1,10 @@
+# [0.9.0](https://github.com/tillhub/tillhub-sdk-node/compare/v0.8.1...v0.9.0) (2018-09-18)
+
+
+### Features
+
+* adds examples; refactors for auth response ([7057e2a](https://github.com/tillhub/tillhub-sdk-node/commit/7057e2a))
+
 ## [0.8.1](https://github.com/tillhub/tillhub-sdk-node/compare/v0.8.0...v0.8.1) (2018-09-16)
 
 
