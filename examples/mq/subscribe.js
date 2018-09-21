@@ -1,5 +1,6 @@
 const Tillhub = require('@tillhub/node-sdk')
 const PubSub = require('@google-cloud/pubsub')
+const chalk = require('chalk')
 
 const th = new Tillhub({
   base: process.env.TILLHUB_BASE,
@@ -8,6 +9,10 @@ const th = new Tillhub({
     apiKey: process.env.API_KEY
   }
 })
+
+function prettyLog (data) {
+  console.log(chalk.blue(JSON.stringify(data, null, 2)) + '\n')
+}
 
 function login (cb) {
   th.init((err, authResponse, client, authInstance) => {
@@ -32,9 +37,13 @@ function subscribe (credentials) {
 
   subscription.on('error', (err) => console.error(err))
   subscription.on('message', (msg) => {
-    console.log(msg)
+    prettyLog({ attributes: msg.attributes })
+    prettyLog({ data: JSON.parse(msg.data.toString()) })
+
     msg.ack()
   })
+
+  console.log(chalk.green('now listening for v0.transactions'))
 }
 
 login((err, credentials) => {

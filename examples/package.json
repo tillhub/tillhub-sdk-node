@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run": "node -r dotenv/config",
+    "run": "nodemon -w ./**/*.js --ignore node_modules -r dotenv/config",
     "mq:subscribe": "npm run run -- mq/subscribe.js"
   },
   "author": "",
@@ -12,7 +12,9 @@
   "dependencies": {
     "@google-cloud/pubsub": "^0.20.0",
     "@tillhub/node-sdk": "latest",
-    "dotenv": "^6.0.0"
+    "chalk": "^2.4.1",
+    "dotenv": "^6.0.0",
+    "nodemon": "^1.18.4"
   },
   "devDependencies": {
     "node": "^10.10.0"
